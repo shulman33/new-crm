@@ -12,6 +12,7 @@ import Footer from "./routes/Footer";
 import AboutUs from "./routes/AboutUs";
 import MenuBar from "./routes/MenuBar";
 import Faq from "./routes/Faq";
+import Businesses from "./routes/Businesses";
 
 
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="aboutus" element={<AboutUs />} />
             <Route path="Faq" element={<Faq />} />
+            <Route path="businesses" element={<Businesses />} />
           </Routes>
         </div>
         <Footer />

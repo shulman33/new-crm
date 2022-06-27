@@ -30,7 +30,7 @@ const About = () => (
                 </h5>
             </h3>
             <h3>
-                David Kohanci
+                David Kohanchi
                 <h5>
                     <a href="mailto:dkohanch@mail.yu.edu">Contact Me</a>
                 </h5>
