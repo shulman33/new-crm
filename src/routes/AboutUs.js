@@ -11,7 +11,7 @@ const About = () => (
         </div>
         <div style={{margin: '1em 16em 3em',}}>
             <h3> We are a team of undergraduate students at Yeshiva University studying Computer Science.
-                In the summer of 2021, we all signed up to spend our summer working
+                In the summer of 2022, we all signed up to spend our summer working
                 on a Customer Relationship Management Website. After a lot of research, we
                 decided that a website where volunteers can sign up for events was the most
                 useful app we could build, and includes many of the features needed to experience what it takes to build a real application.</h3>
@@ -30,7 +30,7 @@ const About = () => (
                 </h5>
             </h3>
             <h3>
-                David Kohanci
+                David Kohanchi
                 <h5>
                     <a href="mailto:dkohanch@mail.yu.edu">Contact Me</a>
                 </h5>
