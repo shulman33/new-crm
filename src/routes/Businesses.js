@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import {Button, Card, Grid, Image, Divider, Segment} from "semantic-ui-react";
+import {Button, Card, Grid, Image, Segment} from "semantic-ui-react";
 import './Businesses.css'
-import {Auth} from "aws-amplify";
 
 export default class Businesses extends Component {
 
@@ -23,11 +22,10 @@ export default class Businesses extends Component {
                         <Grid.Column>
                             <div className="featured"></div>
                             <Card.Group>
-                                <Card style={{width: '250px'}}>
+                                <Card style={{width: '699px'}}>
                                     <Card.Content>
                                         <Image
-                                            floated='right'
-                                            size='mini'
+                                            size='medium'
                                             src='https://d3cl79h6n1fe0x.cloudfront.net/wp-content/uploads/2016/10/28145926/chipotle-logo-1-copy.png'
                                         />
                                         <Card.Header>Chipotle</Card.Header>
@@ -44,11 +42,10 @@ export default class Businesses extends Component {
                                         </div>
                                     </Card.Content>
                                 </Card>
-                                <Card style={{width: '250px'}}>
+                                <Card style={{width: '699px'}}>
                                     <Card.Content>
                                         <Image
-                                            floated='right'
-                                            size='mini'
+                                            size='medium'
                                             src='https://d3cl79h6n1fe0x.cloudfront.net/wp-content/uploads/2016/10/28145926/chipotle-logo-1-copy.png'
                                         />
                                         <Card.Header>Chipotle</Card.Header>
@@ -65,11 +62,10 @@ export default class Businesses extends Component {
                                         </div>
                                     </Card.Content>
                                 </Card>
-                                <Card style={{width: '250px'}}>
+                                <Card style={{width: '699px'}}>
                                     <Card.Content>
                                         <Image
-                                            floated='right'
-                                            size='mini'
+                                            size='medium'
                                             src='https://d3cl79h6n1fe0x.cloudfront.net/wp-content/uploads/2016/10/28145926/chipotle-logo-1-copy.png'
                                         />
                                         <Card.Header>Chipotle</Card.Header>
@@ -86,11 +82,10 @@ export default class Businesses extends Component {
                                         </div>
                                     </Card.Content>
                                 </Card>
-                                <Card style={{width: '250px'}}>
+                                <Card style={{width: '699px'}}>
                                     <Card.Content>
                                         <Image
-                                            floated='right'
-                                            size='mini'
+                                            size='medium'
                                             src='https://d3cl79h6n1fe0x.cloudfront.net/wp-content/uploads/2016/10/28145926/chipotle-logo-1-copy.png'
                                         />
                                         <Card.Header>Chipotle</Card.Header>
@@ -108,11 +103,10 @@ export default class Businesses extends Component {
                                     </Card.Content>
                                 </Card>
 
-                                <Card style={{width: '250px'}}>
+                                <Card style={{width: '699px'}}>
                                     <Card.Content>
                                         <Image
-                                            floated='right'
-                                            size='mini'
+                                            size='medium'
                                             src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
                                         />
                                         <Card.Header>Starbucks</Card.Header>
@@ -129,11 +123,10 @@ export default class Businesses extends Component {
                                         </div>
                                     </Card.Content>
                                 </Card>
-                                <Card style={{width: '250px'}}>
+                                <Card style={{width: '699px'}}>
                                     <Card.Content>
                                         <Image
-                                            floated='right'
-                                            size='mini'
+                                            size='medium'
                                             src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
                                         />
                                         <Card.Header>Starbucks</Card.Header>
@@ -150,11 +143,10 @@ export default class Businesses extends Component {
                                         </div>
                                     </Card.Content>
                                 </Card>
-                                <Card style={{width: '250px'}}>
+                                <Card style={{width: '699px'}}>
                                     <Card.Content>
                                         <Image
-                                            floated='right'
-                                            size='mini'
+                                            size='medium'
                                             src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
                                         />
                                         <Card.Header>Starbucks</Card.Header>
@@ -171,11 +163,10 @@ export default class Businesses extends Component {
                                         </div>
                                     </Card.Content>
                                 </Card>
-                                <Card style={{width: '250px'}}>
+                                <Card style={{width: '699px'}}>
                                     <Card.Content>
                                         <Image
-                                            floated='right'
-                                            size='mini'
+                                            size='medium'
                                             src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
                                         />
                                         <Card.Header>Starbucks</Card.Header>
@@ -193,11 +184,10 @@ export default class Businesses extends Component {
                                     </Card.Content>
                                 </Card>
 
-                                <Card style={{width: '250px'}}>
+                                <Card style={{width: '699px'}}>
                                     <Card.Content>
                                         <Image
-                                            floated='right'
-                                            size='mini'
+                                            size='medium'
                                             src='https://image.similarpng.com/very-thumbnail/2020/05/Pizza-logo-vector-PNG.png'
                                         />
                                         <Card.Header>Grandmas</Card.Header>
