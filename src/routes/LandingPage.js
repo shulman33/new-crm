@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Button, Card, Grid, Image, Divider, Segment} from "semantic-ui-react";
 import './LandingPage.css'
 import {Auth} from "aws-amplify";
+import {Link} from "react-router-dom";
 
 export default class LandingPage extends Component {
 
@@ -14,8 +15,16 @@ export default class LandingPage extends Component {
                         <h2>More than just a CRM, it's a tool for managing your business.</h2>
                     </p>
                     <div className="Get-Started">
-                        <Button size='big' inverted onClick={() => Auth.federatedSignIn()}>Get Started</Button>
-                        <Button size='big' inverted onClick={() => Auth.signOut()}>Sign Out</Button>
+                        <Button size='big' inverted>
+
+                            <Link to="/BussinessLogin" style={{color: 'white'}}> Get Started as a Business </Link>
+
+                        </Button>
+                        <Button size='big' inverted>
+
+                            <Link to="/CustomerLogin" style={{color: 'white'}}> Get Started as a Customer </Link>
+
+                        </Button>
                     </div>
                 </section>
                 <Segment className='segment'>
