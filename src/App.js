@@ -14,6 +14,7 @@ import MenuBar from "./routes/MenuBar";
 import Faq from "./routes/Faq";
 import CustomerWelcomeP from "./routes/CustomerWelcomeP";
 import Businesses from "./routes/Businesses";
+import DummyLogin from "./routes/DummyLogin"
 
 
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="aboutus" element={<AboutUs />} />
             <Route path="Faq" element={<Faq />} />
             <Route path="businesses" element={<Businesses />} />
+            <Route path="dummylogin" element={<DummyLogin />} />
           </Routes>
         </div>
         <Footer />

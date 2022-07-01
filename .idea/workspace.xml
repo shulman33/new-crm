@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e3504a9f-25a7-457d-86fc-2f2c35c40a60" name="Changes" comment="create businesses page">
+    <list default="true" id="e3504a9f-25a7-457d-86fc-2f2c35c40a60" name="Changes" comment="change card style on business page">
+      <change afterPath="$PROJECT_DIR$/src/routes/DummyLogin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/Businesses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Businesses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/MenuBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/MenuBar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -33,6 +38,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="2B1hZswjnOV4DoYrrpYfXKFVyPb" />
@@ -53,12 +59,14 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/yosef/Library/Application Support/JetBrains/Toolbox/apps/PhpStorm/ch-0/221.5921.28/PhpStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/API" />
       <recent name="$PROJECT_DIR$/src/routes" />
     </key>
   </component>
@@ -76,6 +84,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -90,7 +102,9 @@
       <workItem from="1656079574438" duration="3092000" />
       <workItem from="1656087171410" duration="656000" />
       <workItem from="1656254347052" duration="35000" />
-      <workItem from="1656254395102" duration="7957000" />
+      <workItem from="1656254395102" duration="13363000" />
+      <workItem from="1656514942520" duration="268000" />
+      <workItem from="1656535390720" duration="8262000" />
     </task>
     <task id="LOCAL-00001" summary="create businesses page">
       <created>1656336576714</created>
@@ -99,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656336576714</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="change card style on business page">
+      <created>1656338514291</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1656338514291</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,7 +131,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -119,6 +146,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="create businesses page" />
-    <option name="LAST_COMMIT_MESSAGE" value="create businesses page" />
+    <MESSAGE value="change card style on business page" />
+    <option name="LAST_COMMIT_MESSAGE" value="change card style on business page" />
   </component>
 </project>
