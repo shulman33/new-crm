@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import axios from "axios";
 
 export default class DummyLogin extends Component {
@@ -6,25 +6,22 @@ export default class DummyLogin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            TableName: 'CustomerUser',
-            Item: {
-                customerId: {
-                    S: this.generate
-                },
-                businessIdSet: {
-                    NS: []
-                },
-                name: {
-                    S: ''
-                },
-                wallet: {
-                    L: [
-                        {SS: []},
-                        {N: ''}
-                    ]
-                },
-            }
+            name: ''
         }
+    }
+
+    generateJsonData = ()=> {
+        return {
+            "TableName": "CustomerUserDB",
+            "Item": {
+                "customerId": {
+                    "S": this.generate()
+                },
+                "name": {
+                    "S": this.state.name
+                }
+            }
+        };
     }
 
     generate = ()=> {
@@ -41,7 +38,7 @@ export default class DummyLogin extends Component {
 
     handleSubmit = (e)=> {
         e.preventDefault()
-        axios.post('https://objntfufkk.execute-api.us-east-1.amazonaws.com/beta/post', this.state)
+        axios.post('https://objntfufkk.execute-api.us-east-1.amazonaws.com/beta/post', this.generateJsonData())
             .then(response => {
                 console.log(response)
             })
