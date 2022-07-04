@@ -19,6 +19,7 @@ import BussinessLogin from "./routes/BussinessLogin";
 import BussinessSignUp from "./routes/BussinessSignUp";
 import CustomerLogin from "./routes/CustomerLogin";
 import CustomerSignUp from "./routes/CustomerSignUp";
+import DummyLogin from "./routes/DummyLogin"
 
 
 
@@ -42,6 +43,7 @@ function App() {
                 <Route path="aboutus" element={<AboutUs />} />
                 <Route path="Faq" element={<Faq />} />
                 <Route path="businesses" element={<Businesses />} />
+                <Route path="dummylogin" element={<DummyLogin />} />
           </Routes>
         </div>
         <Footer />

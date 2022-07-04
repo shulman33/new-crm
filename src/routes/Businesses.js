@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Button, Card, Grid, Image, Segment} from "semantic-ui-react";
-import './Businesses.css'
+import './Businesses.css';
+
 
 export default class Businesses extends Component {
 
