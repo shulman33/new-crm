@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e3504a9f-25a7-457d-86fc-2f2c35c40a60" name="Changes" comment="change card style on business page">
+    <list default="true" id="e3504a9f-25a7-457d-86fc-2f2c35c40a60" name="Changes" comment="create businesses page">
+      <change afterPath="$PROJECT_DIR$/src/routes/BussinessLogin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/BussinessSignUp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/CustomerLogin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/CustomerSignUp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/BussinessUserPool.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/CustomerUserPool.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/LandingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/LandingPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/MenuBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/MenuBar.js" afterDir="false" />
+          <list default="true" id="e3504a9f-25a7-457d-86fc-2f2c35c40a60" name="Changes" comment="change card style on business page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/DummyLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/DummyLogin.js" afterDir="false" />
     </list>
@@ -33,6 +46,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
     <option name="selectedTabId" value="CurrentFile" />
     <option name="showPreview" value="true" />
   </component>
@@ -54,7 +68,8 @@
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/yosef/Library/Application Support/JetBrains/Toolbox/apps/PhpStorm/ch-0/221.5921.28/PhpStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -63,6 +78,7 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/API" />
       <recent name="$PROJECT_DIR$/src/routes" />
+      <recent name="$PROJECT_DIR$/src/utils" />
     </key>
   </component>
   <component name="RunManager">
