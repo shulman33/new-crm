@@ -19,6 +19,7 @@ import SignInCustomer from "./routes/NewCustomerLogin";
 import SignUpBusiness from "./routes/NewBusinessSignUp";
 import SignUpCustomer from "./routes/NewCustomerSignUp";
 import SignInBusiness from "./routes/NewBusinessLogin";
+import Dashboard from "./routes/Dashboard";
 
 
 
@@ -43,6 +44,7 @@ function App() {
                 <Route path="Faq" element={<Faq />} />
                 <Route path="businesses" element={<Businesses />} />
                 <Route path="dummylogin" element={<DummyLogin />} />
+                <Route path="businessdashboard" element={<Dashboard/>} />
           </Routes>
         </div>
         <Footer />
