@@ -12,6 +12,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {Link} from "react-router-dom";
 import CustomerUserPool from "../utils/CustomerUserPool";
 import {useState} from "react";
+import axios from "axios";
 
 const theme = createTheme();
 
@@ -19,6 +20,31 @@ export default function SignUpCustomer() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+
+    const generateJsonData = ()=> {
+        return {
+            "TableName": "CustomerUserDB",
+            "Item": {
+                "customerId": {
+                    "S": generateId()
+                },
+                "firstName": {
+                    "S": firstName
+                },
+                "lastName": {
+                    "S": lastName
+                }
+            }
+        }
+    };
+
+    const generateId = ()=> {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -27,6 +53,11 @@ export default function SignUpCustomer() {
             if (err) console.error(err);
             console.log(data);
         });
+
+        axios.post('https://objntfufkk.execute-api.us-east-1.amazonaws.com/beta/post', generateJsonData())
+            .then(response => {
+                console.log(response)
+            })
     };
 
     return (
@@ -58,6 +89,8 @@ export default function SignUpCustomer() {
                                     id="firstName"
                                     label="First Name"
                                     autoFocus
+                                    value={firstName}
+                                    onChange={even => setFirstName(even.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -68,6 +101,8 @@ export default function SignUpCustomer() {
                                     label="Last Name"
                                     name="lastName"
                                     autoComplete="family-name"
+                                    value={lastName}
+                                    onChange={event => setLastName(event.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={12}>
