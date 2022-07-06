@@ -24,8 +24,12 @@ export default function SignUpCustomer() {
         event.preventDefault();
 
         CustomerUserPool.signUp(email, password, [], null, (err, data) => {
-            if (err) console.error(err);
-            console.log(data);
+            if (err){
+                console.error(err);
+            } else{
+                alert('Thank you for registering. Check your email for a verification link then log back in')
+            }
+
         });
     };
 
