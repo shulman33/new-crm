@@ -14,11 +14,11 @@ import MenuBar from "./routes/MenuBar";
 import Faq from "./routes/Faq";
 import CustomerWelcomeP from "./routes/CustomerWelcomeP";
 import Businesses from "./routes/Businesses";
-import DummyLogin from "./routes/DummyLogin"
 import SignInCustomer from "./routes/NewCustomerLogin";
 import SignUpBusiness from "./routes/NewBusinessSignUp";
 import SignUpCustomer from "./routes/NewCustomerSignUp";
 import SignInBusiness from "./routes/NewBusinessLogin";
+import Dashboard from "./routes/Dashboard";
 
 
 
@@ -42,7 +42,7 @@ function App() {
                 <Route path="aboutus" element={<AboutUs />} />
                 <Route path="Faq" element={<Faq />} />
                 <Route path="businesses" element={<Businesses />} />
-                <Route path="dummylogin" element={<DummyLogin />} />
+                <Route path="businessdashboard" element={<Dashboard/>} />
           </Routes>
         </div>
         <Footer />

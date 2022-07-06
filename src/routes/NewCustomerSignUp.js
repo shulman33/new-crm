@@ -50,8 +50,12 @@ export default function SignUpCustomer() {
         event.preventDefault();
 
         CustomerUserPool.signUp(email, password, [], null, (err, data) => {
-            if (err) console.error(err);
-            console.log(data);
+            if (err){
+                console.error(err);
+            } else{
+                alert('Thank you for registering. Check your email for a verification link then log back in')
+            }
+
         });
 
         axios.post('https://objntfufkk.execute-api.us-east-1.amazonaws.com/beta/post', generateJsonData())
@@ -90,7 +94,7 @@ export default function SignUpCustomer() {
                                     label="First Name"
                                     autoFocus
                                     value={firstName}
-                                    onChange={even => setFirstName(even.target.value)}
+                                    onChange={event => setFirstName(event.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>

@@ -25,10 +25,10 @@ export default class MenuBar extends Component {
                     <Link to="/AboutUs" style={{color: 'black'}}> About Us </Link>
                 </Menu.Item>
                 <Menu.Item
-                    name='DummyLogin'
+                    name='Business Dashboard'
                     onClick={this.handleItemClick}
                 >
-                    <Link to="/DummyLogin" style={{color: 'black'}}> Dummy Login </Link>
+                    <Link to="/businessdashboard" style={{color: 'black'}}> Business Dashboard </Link>
                 </Menu.Item>
                 <Menu.Menu position='right'>
                     <Menu.Item>
