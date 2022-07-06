@@ -12,6 +12,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {Link} from "react-router-dom";
 import BussinessUserPool from "../utils/BussinessUserPool";
 import {useState} from "react";
+import axios from "axios";
+import {v4 as uuid} from "uuid";
 
 const theme = createTheme();
 
@@ -23,6 +25,29 @@ export default function SignUpBusiness() {
     const [description, setDescription] = useState('');
     const [address, setAddress] = useState('');
 
+    const generateJsonData = ()=> {
+        return {
+            "TableName": "BusinessUserDB",
+            "Item": {
+                "businessId": {
+                    "S": uuid()
+                },
+                "businessName": {
+                    "S": business
+                },
+                "email": {
+                    "S": email
+                },
+                "address": {
+                    "S": address
+                },
+                "description": {
+                    "S": description
+                }
+            }
+        }
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -33,6 +58,11 @@ export default function SignUpBusiness() {
                 alert('Thank you for registering. Check your email for a verification link then log back in')
             }
         });
+
+        axios.post('https://objntfufkk.execute-api.us-east-1.amazonaws.com/beta/post', generateJsonData())
+            .then(response => {
+                console.log(response)
+            })
     };
 
     return (

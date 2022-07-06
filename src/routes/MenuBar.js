@@ -37,7 +37,7 @@ export default class MenuBar extends Component {
                     <Menu.Item>
                         <Button color='green'>
 
-                            <Link to="/BussinessLogin" style={{color: 'white'}}> Login as Business </Link>
+                            <Link to="/BusinessLogin" style={{color: 'white'}}> Login as Business </Link>
 
                         </Button>
                     </Menu.Item>
