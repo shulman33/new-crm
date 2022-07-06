@@ -94,7 +94,7 @@ export default function SignUpCustomer() {
                                     label="First Name"
                                     autoFocus
                                     value={firstName}
-                                    onChange={even => setFirstName(even.target.value)}
+                                    onChange={event => setFirstName(event.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>

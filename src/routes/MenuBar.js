@@ -25,12 +25,6 @@ export default class MenuBar extends Component {
                     <Link to="/AboutUs" style={{color: 'black'}}> About Us </Link>
                 </Menu.Item>
                 <Menu.Item
-                    name='DummyLogin'
-                    onClick={this.handleItemClick}
-                >
-                    <Link to="/DummyLogin" style={{color: 'black'}}> Dummy Login </Link>
-                </Menu.Item>
-                <Menu.Item
                     name='Business Dashboard'
                     onClick={this.handleItemClick}
                 >
