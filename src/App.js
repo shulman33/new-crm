@@ -33,8 +33,8 @@ function App() {
           </nav>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-                <Route path="BussinessLogin" element={<SignInBusiness />} />
-                    <Route path="BussinessSignUp" element={<SignUpBusiness />} />
+                <Route path="BusinessLogin" element={<SignInBusiness />} />
+                    <Route path="BusinessSignUp" element={<SignUpBusiness />} />
                 <Route path="CustomerLogin" element={<SignInCustomer />} />
                     <Route path="CustomerWelcome" element={<CustomerWelcomeP />} />
                     <Route path="CustomerSignup" element={<SignUpCustomer />} />

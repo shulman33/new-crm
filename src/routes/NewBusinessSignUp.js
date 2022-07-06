@@ -19,7 +19,7 @@ export default function SignUpBusiness() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [bussiness, setBussiness] = useState('');
+    const [business, setBusiness] = useState('');
     const [description, setDescription] = useState('');
     const [address, setAddress] = useState('');
 
@@ -90,8 +90,8 @@ export default function SignUpBusiness() {
                                     label="Name of your business"
                                     type="input"
                                     id="business"
-                                    value={bussiness}
-                                    onChange={event => setBussiness(event.target.value)}
+                                    value={business}
+                                    onChange={event => setBusiness(event.target.value)}
                                 />
                             </Grid>
 
@@ -133,7 +133,7 @@ export default function SignUpBusiness() {
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link to="/BussinessLogin"> Already have an account? Sign In</Link>
+                                <Link to="/BusinessLogin"> Already have an account? Sign In</Link>
                             </Grid>
                         </Grid>
                     </Box>

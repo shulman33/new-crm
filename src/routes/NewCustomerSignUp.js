@@ -13,6 +13,7 @@ import {Link} from "react-router-dom";
 import CustomerUserPool from "../utils/CustomerUserPool";
 import {useState} from "react";
 import axios from "axios";
+import {v4 as uuid} from "uuid";
 
 const theme = createTheme();
 
@@ -28,23 +29,20 @@ export default function SignUpCustomer() {
             "TableName": "CustomerUserDB",
             "Item": {
                 "customerId": {
-                    "S": generateId()
+                    "S": uuid()
                 },
                 "firstName": {
                     "S": firstName
                 },
                 "lastName": {
                     "S": lastName
+                },
+                "email": {
+                    "S": email
                 }
             }
         }
     };
-
-    const generateId = ()=> {
-        return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
-    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
