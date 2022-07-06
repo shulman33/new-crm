@@ -10,7 +10,7 @@
     font-weight: bold;
     height: 60vh;
 }
-.main{
+.main.ui.grid{
     background-color: white;
 }
 

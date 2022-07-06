@@ -14,6 +14,11 @@ import MenuBar from "./routes/MenuBar";
 import Faq from "./routes/Faq";
 import CustomerWelcomeP from "./routes/CustomerWelcomeP";
 import Businesses from "./routes/Businesses";
+import SignInCustomer from "./routes/NewCustomerLogin";
+import SignUpBusiness from "./routes/NewBusinessSignUp";
+import SignUpCustomer from "./routes/NewCustomerSignUp";
+import SignInBusiness from "./routes/NewBusinessLogin";
+import Dashboard from "./routes/Dashboard";
 
 
 
@@ -28,10 +33,16 @@ function App() {
           </nav>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="CustomerWelcomeP" element={<CustomerWelcomeP />} />
-            <Route path="aboutus" element={<AboutUs />} />
-            <Route path="Faq" element={<Faq />} />
-            <Route path="businesses" element={<Businesses />} />
+                <Route path="BusinessLogin" element={<SignInBusiness />} />
+                    <Route path="BusinessSignUp" element={<SignUpBusiness />} />
+                <Route path="CustomerLogin" element={<SignInCustomer />} />
+                    <Route path="CustomerWelcome" element={<CustomerWelcomeP />} />
+                    <Route path="CustomerSignup" element={<SignUpCustomer />} />
+                        <Route path="CustomerWelcome" element={<CustomerWelcomeP />} />
+                <Route path="aboutus" element={<AboutUs />} />
+                <Route path="Faq" element={<Faq />} />
+                <Route path="businesses" element={<Businesses />} />
+                <Route path="businessdashboard" element={<Dashboard/>} />
           </Routes>
         </div>
         <Footer />
