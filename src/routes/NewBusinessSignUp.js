@@ -12,6 +12,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {Link} from "react-router-dom";
 import BussinessUserPool from "../utils/BussinessUserPool";
 import {useState} from "react";
+import axios from "axios";
+import {v4 as uuid} from "uuid";
 
 const theme = createTheme();
 
@@ -19,9 +21,32 @@ export default function SignUpBusiness() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [bussiness, setBussiness] = useState('');
+    const [business, setBusiness] = useState('');
     const [description, setDescription] = useState('');
     const [address, setAddress] = useState('');
+
+    const generateJsonData = ()=> {
+        return {
+            "TableName": "BusinessUserDB",
+            "Item": {
+                "businessId": {
+                    "S": uuid()
+                },
+                "businessName": {
+                    "S": business
+                },
+                "email": {
+                    "S": email
+                },
+                "address": {
+                    "S": address
+                },
+                "description": {
+                    "S": description
+                }
+            }
+        }
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -33,6 +58,11 @@ export default function SignUpBusiness() {
                 alert('Thank you for registering. Check your email for a verification link then log back in')
             }
         });
+
+        axios.post('https://objntfufkk.execute-api.us-east-1.amazonaws.com/beta/post', generateJsonData())
+            .then(response => {
+                console.log(response)
+            })
     };
 
     return (
@@ -90,8 +120,8 @@ export default function SignUpBusiness() {
                                     label="Name of your business"
                                     type="input"
                                     id="business"
-                                    value={bussiness}
-                                    onChange={event => setBussiness(event.target.value)}
+                                    value={business}
+                                    onChange={event => setBusiness(event.target.value)}
                                 />
                             </Grid>
 
@@ -133,7 +163,7 @@ export default function SignUpBusiness() {
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link to="/BussinessLogin"> Already have an account? Sign In</Link>
+                                <Link to="/BusinessLogin"> Already have an account? Sign In</Link>
                             </Grid>
                         </Grid>
                     </Box>

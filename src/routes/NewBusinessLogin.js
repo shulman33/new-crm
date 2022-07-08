@@ -116,7 +116,7 @@ export default function SignInBusiness({businessAuth}) {
                         </Button>
                         <Grid container>
                             <Grid item>
-                                <Link to="/BussinessSignUp"> Don't have an account? Sign Up</Link>
+                                <Link to="/BusinessSignUp"> Don't have an account? Sign Up</Link>
                             </Grid>
                         </Grid>
                     </Box>
