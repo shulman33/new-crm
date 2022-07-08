@@ -4,7 +4,6 @@ import { Amplify } from 'aws-amplify';
 import awsExports from './aws-exports';
 import LandingPage from "./routes/LandingPage";
 import {
-  BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
@@ -19,34 +18,56 @@ import SignUpBusiness from "./routes/NewBusinessSignUp";
 import SignUpCustomer from "./routes/NewCustomerSignUp";
 import SignInBusiness from "./routes/NewBusinessLogin";
 import Dashboard from "./routes/Dashboard";
+import {useEffect, useState} from "react";
 
 
 
 Amplify.configure(awsExports);
 
 function App() {
+    const [custermer, setCustermer] = useState(null);
+    const [business, setBusiness] = useState(null);
+
+    useEffect(() => {
+        const u = localStorage.getItem('custermer');
+        u && JSON.parse(u) ? setCustermer(true) : setCustermer(false);
+    },[]);
+
+    useEffect(() => {
+       localStorage.setItem("custermer", custermer);
+    }, [custermer]);
   return (
-      <BrowserRouter>
+
         <div className="App">
           <nav>
             <MenuBar />
           </nav>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-                <Route path="BussinessLogin" element={<SignInBusiness />} />
-                    <Route path="BussinessSignUp" element={<SignUpBusiness />} />
-                <Route path="CustomerLogin" element={<SignInCustomer />} />
-                    <Route path="CustomerWelcome" element={<CustomerWelcomeP />} />
-                    <Route path="CustomerSignup" element={<SignUpCustomer />} />
-                        <Route path="CustomerWelcome" element={<CustomerWelcomeP />} />
-                <Route path="aboutus" element={<AboutUs />} />
-                <Route path="Faq" element={<Faq />} />
-                <Route path="businesses" element={<Businesses />} />
-                <Route path="businessdashboard" element={<Dashboard/>} />
+              {!business && <Route path="BussinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
+              {business && (
+                  <>
+                      <Route path="businessdashboard" element={<Dashboard />} />
+                  </>
+              )}
+              <Route path="BussinessSignUp" element={<SignUpBusiness />} />
+              {!custermer && <Route path="CustomerLogin" element={<SignInCustomer customerAuth={() => setCustermer(true)}/>} />}
+              {custermer && (
+                  <>
+                      <Route path="CustomerWelcome" element={<CustomerWelcomeP />} />
+                  </>
+              )}
+
+              <Route path="CustomerSignup" element={<SignUpCustomer />} />
+              <Route path="aboutus" element={<AboutUs />} />
+              <Route path="Faq" element={<Faq />} />
+              <Route path="businesses" element={<Businesses />} />
+              <Route path="*" element={<LandingPage />} />
           </Routes>
+            <Footer />
         </div>
-        <Footer />
-      </BrowserRouter>
+
+
 
   );
 }
