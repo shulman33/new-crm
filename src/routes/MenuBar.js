@@ -24,12 +24,6 @@ export default class MenuBar extends Component {
                 >
                     <Link to="/AboutUs" style={{color: 'black'}}> About Us </Link>
                 </Menu.Item>
-                <Menu.Item
-                    name='Business Dashboard'
-                    onClick={this.handleItemClick}
-                >
-                    <Link to="/businessdashboard" style={{color: 'black'}}> Business Dashboard </Link>
-                </Menu.Item>
                 <Menu.Menu position='right'>
                     <Menu.Item>
                         <Input className='icon' icon='search' placeholder='Search...' />
