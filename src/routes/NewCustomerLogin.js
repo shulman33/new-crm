@@ -15,14 +15,18 @@ import {Link} from "react-router-dom";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 import CustomerUserPool from "../utils/CustomerUserPool";
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import Alert from "@mui/material/Alert";
 
 
 const theme = createTheme();
 
-export default function SignInCustomer() {
+export default function SignInCustomer({customerAuth}) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -38,11 +42,14 @@ export default function SignInCustomer() {
 
         user.authenticateUser(authDetails, {
             onSuccess: data => {
-                console.log("YOU LOGGED IN IM JUST RETARDED AND CANT REDIRECT YOU:", data);
+                console.log("YOU LOGGED IN:", data);
+                customerAuth()
+                navigate("/CustomerWelcome")
             },
 
             onFailure: err => {
                 console.error("onFailure:", err);
+                setErrorMessage('Incorrect username or password');
             },
 
             newPasswordRequired: data => {
@@ -70,6 +77,7 @@ export default function SignInCustomer() {
                         Customer Sign in
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
                         <TextField
                             margin="normal"
                             required

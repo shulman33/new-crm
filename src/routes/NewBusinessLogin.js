@@ -14,14 +14,18 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {Link} from "react-router-dom";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 import BussinessUserPool from "../utils/BussinessUserPool";
+import Alert from '@mui/material/Alert';
+import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 
 const theme = createTheme();
 
-export default function SignInBusiness() {
+export default function SignInBusiness({businessAuth}) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -38,10 +42,13 @@ export default function SignInBusiness() {
         user.authenticateUser(authDetails, {
             onSuccess: data => {
                 console.log("YOU LOGGED IN AND NO ONE CARES:", data);
+                businessAuth()
+                navigate("/businessdashboard")
             },
 
             onFailure: err => {
                 console.error("onFailure:", err);
+                setErrorMessage('Incorrect username or password');
             },
 
             newPasswordRequired: data => {
@@ -69,6 +76,7 @@ export default function SignInBusiness() {
                         Business Sign in
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
                         <TextField
                             margin="normal"
                             required
