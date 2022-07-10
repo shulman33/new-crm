@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button, Card, Grid, Image, Divider, Segment} from "semantic-ui-react";
+import {Button, Card, Grid, Image, Segment} from "semantic-ui-react";
 import './CustomerWelcomeP.css'
 import {Auth} from "aws-amplify";
 

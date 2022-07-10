@@ -1,5 +1,5 @@
-import React, {Component, useEffect, useState} from 'react'
-import {Button, Card, Grid, Image, Segment} from "semantic-ui-react";
+import React, {useEffect, useState} from 'react'
+import {Card, Grid, Segment} from "semantic-ui-react";
 import './Businesses.css';
 import axios from "axios";
 import BusinessCards from "./BusinessCards";
@@ -37,7 +37,7 @@ export default function Businesses() {
                     </h3>
                 </p>
             </section>
-            <Segment className='segment'>
+            <Segment className='segment' style={{marginLeft: '11vh'}}>
                 <Grid className='main' columns={1} relaxed='very'>
                     <Grid.Column>
                         <div className="featured"></div>
