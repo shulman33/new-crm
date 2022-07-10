@@ -1,12 +1,33 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Button, Card, Grid, Image, Divider, Segment} from "semantic-ui-react";
 import './LandingPage.css'
-import {Auth} from "aws-amplify";
+// import {Auth} from "aws-amplify";
 import {Link} from "react-router-dom";
+import {useState} from "react";
+import axios from "axios";
+import BusinessCards from "./BusinessCards";
+import {useEffect} from "react";
 
-export default class LandingPage extends Component {
 
-    render() {
+export default function LandingPage(){
+    const [businesses, setBusinesses] = useState('');
+
+    useEffect(() => {
+        getAllBusinesses();
+    }, []);
+
+    const jsonData = {
+        "TableName": "BusinessUserDB"
+    }
+
+    const getAllBusinesses = () => {
+        axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/scan', jsonData)
+            .then(response => {
+                const allBusinesses = response.data.Items;
+                setBusinesses(allBusinesses);
+            });
+    }
+
         return (
             <div>
                 <section className="Welcome-Section">
@@ -17,7 +38,7 @@ export default class LandingPage extends Component {
                     <div className="Get-Started">
                         <Button size='big' inverted>
 
-                            <Link to="/BussinessLogin" style={{color: 'white'}}> Get Started as a Business </Link>
+                            <Link to="/BusinessLogin" style={{color: 'white'}}> Get Started as a Business </Link>
 
                         </Button>
                         <Button size='big' inverted>
@@ -108,219 +129,8 @@ export default class LandingPage extends Component {
                         </Grid.Column>
                         <Grid.Column floated='right' width={7}>
                             <div className="featured"><h2>Featured Businesses</h2></div>
-                            <Card.Group style={{marginLeft : '7vh'}}>
-                                <Card style={{width: '250px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            floated='right'
-                                            size='mini'
-                                            src='https://d3cl79h6n1fe0x.cloudfront.net/wp-content/uploads/2016/10/28145926/chipotle-logo-1-copy.png'
-                                        />
-                                        <Card.Header>Chipotle</Card.Header>
-                                        <Card.Meta>Best Mexican in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '250px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            floated='right'
-                                            size='mini'
-                                            src='https://d3cl79h6n1fe0x.cloudfront.net/wp-content/uploads/2016/10/28145926/chipotle-logo-1-copy.png'
-                                        />
-                                        <Card.Header>Chipotle</Card.Header>
-                                        <Card.Meta>Best Mexican in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '250px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            floated='right'
-                                            size='mini'
-                                            src='https://d3cl79h6n1fe0x.cloudfront.net/wp-content/uploads/2016/10/28145926/chipotle-logo-1-copy.png'
-                                        />
-                                        <Card.Header>Chipotle</Card.Header>
-                                        <Card.Meta>Best Mexican in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '250px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            floated='right'
-                                            size='mini'
-                                            src='https://d3cl79h6n1fe0x.cloudfront.net/wp-content/uploads/2016/10/28145926/chipotle-logo-1-copy.png'
-                                        />
-                                        <Card.Header>Chipotle</Card.Header>
-                                        <Card.Meta>Best Mexican in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-
-                                <Card style={{width: '250px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            floated='right'
-                                            size='mini'
-                                            src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
-                                        />
-                                        <Card.Header>Starbucks</Card.Header>
-                                        <Card.Meta>Best Coffee in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '250px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            floated='right'
-                                            size='mini'
-                                            src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
-                                        />
-                                        <Card.Header>Starbucks</Card.Header>
-                                        <Card.Meta>Best Coffee in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '250px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            floated='right'
-                                            size='mini'
-                                            src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
-                                        />
-                                        <Card.Header>Starbucks</Card.Header>
-                                        <Card.Meta>Best Coffee in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '250px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            floated='right'
-                                            size='mini'
-                                            src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
-                                        />
-                                        <Card.Header>Starbucks</Card.Header>
-                                        <Card.Meta>Best Coffee in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '250px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            floated='right'
-                                            size='mini'
-                                            src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
-                                        />
-                                        <Card.Header>Starbucks</Card.Header>
-                                        <Card.Meta>Best Coffee in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '250px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            floated='right'
-                                            size='mini'
-                                            src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
-                                        />
-                                        <Card.Header>Starbucks</Card.Header>
-                                        <Card.Meta>Best Coffee in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-
+                            <Card.Group style={{marginLeft : '7vh', marginRight: '9vh'}}>
+                                <BusinessCards businesses={businesses}/>
                             </Card.Group>
                         </Grid.Column>
                     </Grid>
@@ -329,4 +139,3 @@ export default class LandingPage extends Component {
             </div>
         )
     }
-}
