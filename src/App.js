@@ -44,13 +44,13 @@ function App() {
           </nav>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-              {!business && <Route path="BussinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
+              {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
               {business && (
                   <>
                       <Route path="businessdashboard" element={<Dashboard />} />
                   </>
               )}
-              <Route path="BussinessSignUp" element={<SignUpBusiness />} />
+              <Route path="BusinessSignUp" element={<SignUpBusiness />} />
               {!custermer && <Route path="CustomerLogin" element={<SignInCustomer customerAuth={() => setCustermer(true)}/>} />}
               {custermer && (
                   <>
