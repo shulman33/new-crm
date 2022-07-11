@@ -11,7 +11,7 @@ export default function BusinessCards(props) {
                 businesses.map((business) => {
                     console.log(business);
                     return(
-                        <Card style={{width: '699px'}}>
+                        <Card style={{width: '84vh'}}>
                             <Card.Content>
                                 <Card.Header>{business.businessName.S}</Card.Header>
                                 <Card.Description>{business.description.S}</Card.Description>

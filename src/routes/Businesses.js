@@ -11,7 +11,7 @@ export default function Businesses() {
 
     useEffect(() => {
         getAllBusinesses();
-    }, []);
+    });
 
     const jsonData = {
         "TableName": "BusinessUserDB"
@@ -37,7 +37,7 @@ export default function Businesses() {
                     </h3>
                 </p>
             </section>
-            <Segment className='segment' style={{marginLeft: '11vh'}}>
+            <Segment className='segment'style={{marginLeft: '11vh', marginRight: '11vh'}}>
                 <Grid className='main' columns={1} relaxed='very'>
                     <Grid.Column>
                         <div className="featured"></div>
