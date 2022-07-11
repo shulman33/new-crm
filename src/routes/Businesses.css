@@ -24,8 +24,10 @@
     border: 0;
     margin-top: 0;
     margin-bottom: 0;
+    justify-content: center;
 }
-.featured{
+
+.featured {
     width: 270px;
     white-space: nowrap; /* Keeps the content on a single line */
     letter-spacing: .15em; /* Adjust as needed */
