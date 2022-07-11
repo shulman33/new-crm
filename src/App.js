@@ -39,9 +39,11 @@ function App() {
   return (
 
         <div className="App">
-          <nav>
-            <MenuBar />
-          </nav>
+            {!business && (
+                <nav>
+                    <MenuBar />
+                </nav>
+            )}
           <Routes>
             <Route path="/" element={<LandingPage />} />
               {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}

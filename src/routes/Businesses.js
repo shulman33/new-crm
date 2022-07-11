@@ -3,6 +3,7 @@ import {Card, Grid, Segment} from "semantic-ui-react";
 import './Businesses.css';
 import axios from "axios";
 import BusinessCards from "./BusinessCards";
+import {Link} from "react-router-dom";
 
 
 export default function Businesses() {
@@ -29,11 +30,11 @@ export default function Businesses() {
         <div>
             <section className="Participating-Businesses">
                 <p className="intro">
-                    <h1>Participating Businesses</h1>
-                    <h2>Below are all the participating businesses.</h2>
-                    <h3>
+                    <h1 style={{fontFamily: 'Bebas Neue', fontSize: '10vh'}}>Participating Businesses</h1>
+                    <h2 style={{fontFamily: 'Bebas Neue', fontSize: '4vh'}}>Below are all the participating businesses.</h2>
+                    <h3 style={{fontFamily: 'Bebas Neue', fontSize: '3vh'}}>
                         Don't see your favorite business?
-                        <a href="./AboutUs"> Contact us!</a>
+                        <Link to="/AboutUs"> Contact Us </Link>
                     </h3>
                 </p>
             </section>

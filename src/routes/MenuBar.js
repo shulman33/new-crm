@@ -1,26 +1,32 @@
-import React, { Component } from 'react'
+import React, {useState} from 'react'
 import {Button, Input, Menu} from 'semantic-ui-react'
 import {Auth} from "aws-amplify";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 
-export default class MenuBar extends Component {
+export default function MenuBar() {
+    const navigate = useNavigate();
+    const [user, setUser] = useState(false)
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-    render() {
+    function onClick(){
+        setUser(true)
+    }
+    function handleLogout(){
+        Auth.signOut().then(r => setUser(false))
+        navigate("/")
+
+    }
         return (
             <Menu>
                 <Menu.Item header>
-                    <Link to="/" style={{color: 'black'}}> CRM </Link>
+                    <Link to="/" style={{color: 'black'}}> Elite Managing </Link>
                 </Menu.Item>
                 <Menu.Item
                     name='Businesses'
-                    onClick={this.handleItemClick}
                 >
                     <Link to="/Businesses" style={{color: 'black'}}> Businesses </Link>
                 </Menu.Item>
                 <Menu.Item
                     name='About Us'
-                    onClick={this.handleItemClick}
                 >
                     <Link to="/AboutUs" style={{color: 'black'}}> About Us </Link>
                 </Menu.Item>
@@ -28,23 +34,38 @@ export default class MenuBar extends Component {
                     <Menu.Item>
                         <Input className='icon' icon='search' placeholder='Search...' />
                     </Menu.Item>
-                    <Menu.Item>
-                        <Button color='green'>
+                    {!user && (
+                        <>
+                            <Menu.Item>
+                                <Button color='green' onClick={onClick}>
 
-                            <Link to="/BusinessLogin" style={{color: 'white'}}> Login as Business </Link>
+                                    <Link to="/BusinessLogin" style={{color: 'white'}}> Login as Business </Link>
 
-                        </Button>
-                    </Menu.Item>
-                    <Menu.Item>
-                        <Button color='green'>
+                                </Button>
+                            </Menu.Item>
+                            <Menu.Item>
+                                <Button color='green' onClick={onClick}>
 
-                            <Link to="/CustomerLogin" style={{color: 'white'}}> Login as Customer </Link>
+                                    <Link to="/CustomerLogin" style={{color: 'white'}}> Login as Customer </Link>
 
-                        </Button>
-                    </Menu.Item>
+                                </Button>
+                            </Menu.Item>
+                        </>
+                    )}
+                    {user && (
+                        <>
+                            <Menu.Item>
+                                <Button color='green' onClick={handleLogout}>
+
+                                    Logout
+
+                                </Button>
+                            </Menu.Item>
+                        </>
+                    )}
+
                 </Menu.Menu>
                 <Outlet />
             </Menu>
         )
     }
-}

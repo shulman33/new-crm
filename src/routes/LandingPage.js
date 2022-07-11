@@ -32,8 +32,8 @@ export default function LandingPage(){
             <div>
                 <section className="Welcome-Section">
                     <p>
-                        <h1>Welcome to Elite Managing</h1>
-                        <h2>More than just a CRM, it's a tool for managing your business.</h2>
+                        <h1 style={{fontFamily: 'Bebas Neue', fontSize: '10vh', color: 'mintcream'}}>Welcome to Elite Managing</h1>
+                        <h2 style={{fontFamily: 'Bebas Neue', fontSize: '4vh', color: 'mintcream'}}>More than just a CRM, it's a tool for managing your business.</h2>
                     </p>
                     <div className="Get-Started">
                         <Button size='big' inverted>
