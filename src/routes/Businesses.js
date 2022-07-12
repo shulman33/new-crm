@@ -1,215 +1,53 @@
-import React, { Component } from 'react'
-import {Button, Card, Grid, Image, Segment} from "semantic-ui-react";
+import React, {useEffect, useState} from 'react'
+import {Card, Grid, Segment} from "semantic-ui-react";
 import './Businesses.css';
+import axios from "axios";
+import BusinessCards from "./BusinessCards";
+import {Link} from "react-router-dom";
 
 
-export default class Businesses extends Component {
+export default function Businesses() {
 
-    render() {
-        return (
-            <div>
-                <section className="Participating-Businesses">
-                    <p className="intro">
-                        <h1>Participating Businesses</h1>
-                        <h2>Below are all the participating businesses.</h2>
-                        <h3>
-                            Don't see your favorite business?
-                            <a href="./AboutUs"> Contact Us!</a>
-                        </h3>
-                    </p>
-                </section>
-                <Segment className='segment'>
-                    <Grid className='main' columns={1} relaxed='very'>
-                        <Grid.Column>
-                            <div className="featured"></div>
-                            <Card.Group>
-                                <Card style={{width: '699px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            size='medium'
-                                            src='https://d3cl79h6n1fe0x.cloudfront.net/wp-content/uploads/2016/10/28145926/chipotle-logo-1-copy.png'
-                                        />
-                                        <Card.Header>Chipotle</Card.Header>
-                                        <Card.Meta>Best Mexican in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '699px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            size='medium'
-                                            src='https://d3cl79h6n1fe0x.cloudfront.net/wp-content/uploads/2016/10/28145926/chipotle-logo-1-copy.png'
-                                        />
-                                        <Card.Header>Chipotle</Card.Header>
-                                        <Card.Meta>Best Mexican in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '699px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            size='medium'
-                                            src='https://d3cl79h6n1fe0x.cloudfront.net/wp-content/uploads/2016/10/28145926/chipotle-logo-1-copy.png'
-                                        />
-                                        <Card.Header>Chipotle</Card.Header>
-                                        <Card.Meta>Best Mexican in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '699px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            size='medium'
-                                            src='https://d3cl79h6n1fe0x.cloudfront.net/wp-content/uploads/2016/10/28145926/chipotle-logo-1-copy.png'
-                                        />
-                                        <Card.Header>Chipotle</Card.Header>
-                                        <Card.Meta>Best Mexican in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
+    const [businesses, setBusinesses] = useState('');
 
-                                <Card style={{width: '699px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            size='medium'
-                                            src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
-                                        />
-                                        <Card.Header>Starbucks</Card.Header>
-                                        <Card.Meta>Best Coffee in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '699px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            size='medium'
-                                            src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
-                                        />
-                                        <Card.Header>Starbucks</Card.Header>
-                                        <Card.Meta>Best Coffee in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '699px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            size='medium'
-                                            src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
-                                        />
-                                        <Card.Header>Starbucks</Card.Header>
-                                        <Card.Meta>Best Coffee in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                                <Card style={{width: '699px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            size='medium'
-                                            src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png'
-                                        />
-                                        <Card.Header>Starbucks</Card.Header>
-                                        <Card.Meta>Best Coffee in Town</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
+    useEffect(() => {
+        getAllBusinesses();
+    });
 
-                                <Card style={{width: '699px'}}>
-                                    <Card.Content>
-                                        <Image
-                                            size='medium'
-                                            src='https://image.similarpng.com/very-thumbnail/2020/05/Pizza-logo-vector-PNG.png'
-                                        />
-                                        <Card.Header>Grandmas</Card.Header>
-                                        <Card.Meta>Best Pizza in the Heights</Card.Meta>
-                                        <Card.Description>
-                                            This is a description of the restaurant.
-                                        </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui-button'>
-                                            <Button basic color='green'>
-                                                Follow Us
-                                            </Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                            </Card.Group>
-                        </Grid.Column>
-                    </Grid>
-                </Segment>
-            </div>
-        )
+    const jsonData = {
+        "TableName": "BusinessUserDB"
     }
+
+    const getAllBusinesses = () => {
+        axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/scan', jsonData)
+            .then(response => {
+                const allBusinesses = response.data.Items;
+                setBusinesses(allBusinesses);
+            });
+    }
+
+    return (
+        <div>
+            <section className="Participating-Businesses">
+                <p className="intro">
+                    <h1 style={{fontFamily: 'Bebas Neue', fontSize: '10vh'}}>Participating Businesses</h1>
+                    <h2 style={{fontFamily: 'Bebas Neue', fontSize: '4vh'}}>Below are all the participating businesses.</h2>
+                    <h3 style={{fontFamily: 'Bebas Neue', fontSize: '3vh'}}>
+                        Don't see your favorite business?
+                        <Link to="/AboutUs"> Contact Us </Link>
+                    </h3>
+                </p>
+            </section>
+            <Segment className='segment' style={{display: 'flex'}}>
+                <Grid className='main' columns={1} relaxed='very'>
+                    <Grid.Column>
+                        <div className="featured"></div>
+                        <Card.Group>
+                            <BusinessCards businesses={businesses}/>
+                        </Card.Group>
+                    </Grid.Column>
+                </Grid>
+            </Segment>
+        </div>
+    )
 }

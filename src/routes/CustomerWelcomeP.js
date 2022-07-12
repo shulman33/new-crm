@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button, Card, Grid, Image, Divider, Segment} from "semantic-ui-react";
+import {Button, Card, Grid, Image, Segment} from "semantic-ui-react";
 import './CustomerWelcomeP.css'
 import {Auth} from "aws-amplify";
 
@@ -10,15 +10,12 @@ export default class CustomerWelcomeP extends Component {
             <div>
                 <section className="Welcome-Section">
                     <p>
-                        <h1>Welcome to your CRM</h1>
-                        <h2>View your badges and special perks!</h2>
+                        <h1 style={{fontFamily: 'Bebas Neue', fontSize: '10vh', color: 'white'}}>Welcome to your profile</h1>
+                        <h2 style={{fontFamily: 'Bebas Neue', fontSize: '4vh', color: 'white'}}>View your badges and special perks!</h2>
                     </p>
-                    <div className="Get-Started">
-                        <Button size='big' inverted onClick={() => Auth.signOut()}>Sign Out</Button>
-                    </div>
                 </section>
                 <Segment className='segment'>
-                    <Grid className='main' columns={1} relaxed='very'>
+                    <Grid className='main' columns={1} relaxed='very' style={{marginLeft: '1vh'}}>
                         <Grid.Column>
                             <div className="yours"><h2>Your Badges</h2></div>
                             <Card.Group>
