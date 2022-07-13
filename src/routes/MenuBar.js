@@ -3,18 +3,20 @@ import {Button, Input, Menu} from 'semantic-ui-react'
 import {Auth} from "aws-amplify";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 
-export default function MenuBar() {
-    const navigate = useNavigate();
-    const [user, setUser] = useState(false)
-
-    function onClick(){
-        setUser(true)
-    }
-    function handleLogout(){
-        Auth.signOut().then(r => setUser(false))
-        navigate("/")
-
-    }
+export default function MenuBar({setBoth}) {
+    // const navigate = useNavigate();
+    // const [customer, setCustomer] = useState(false)
+    // const [business, setBusiness] = useState(false)
+    //
+    // async function handleLogout(){
+    //     const user = await Auth.signOut();
+    //     setCustomer(false)
+    //     setBusiness(false)
+    //     setBoth(user)
+    //     localStorage.clear();
+    //     navigate("/")
+    //
+    // }
         return (
             <Menu>
                 <Menu.Item header>
@@ -34,35 +36,49 @@ export default function MenuBar() {
                     <Menu.Item>
                         <Input className='icon' icon='search' placeholder='Search...' />
                     </Menu.Item>
-                    {!user && (
-                        <>
-                            <Menu.Item>
-                                <Button color='green' onClick={onClick}>
+                    {/*{!customer && !business && (*/}
+                    {/*    <>*/}
+                    {/*        <Menu.Item>*/}
+                    {/*            <Button color='green' onClick={() => setBusiness(true)}>*/}
 
-                                    <Link to="/BusinessLogin" style={{color: 'white'}}> Login as Business </Link>
+                    {/*                <Link to="/BusinessLogin" style={{color: 'white'}}> Login as Business </Link>*/}
 
-                                </Button>
-                            </Menu.Item>
-                            <Menu.Item>
-                                <Button color='green' onClick={onClick}>
+                    {/*            </Button>*/}
+                    {/*        </Menu.Item>*/}
+                    {/*        <Menu.Item>*/}
+                    {/*            <Button color='green' onClick={() => setCustomer(true)}>*/}
 
-                                    <Link to="/CustomerLogin" style={{color: 'white'}}> Login as Customer </Link>
+                    {/*                <Link to="/CustomerLogin" style={{color: 'white'}}> Login as Customer </Link>*/}
 
-                                </Button>
-                            </Menu.Item>
-                        </>
-                    )}
-                    {user && (
-                        <>
-                            <Menu.Item>
-                                <Button color='green' onClick={handleLogout}>
+                    {/*            </Button>*/}
+                    {/*        </Menu.Item>*/}
+                    {/*    </>*/}
+                    {/*)}*/}
+                    <Menu.Item>
+                        <Button color='green' >
 
-                                    Logout
+                            <Link to="/BusinessLogin" style={{color: 'white'}}> Login as Business </Link>
 
-                                </Button>
-                            </Menu.Item>
-                        </>
-                    )}
+                        </Button>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Button color='green' >
+
+                            <Link to="/CustomerLogin" style={{color: 'white'}}> Login as Customer </Link>
+
+                        </Button>
+                    </Menu.Item>
+                    {/*{(customer || business) && (*/}
+                    {/*    <>*/}
+                    {/*        <Menu.Item>*/}
+                    {/*            <Button color='green' onClick={handleLogout}>*/}
+
+                    {/*                Logout*/}
+
+                    {/*            </Button>*/}
+                    {/*        </Menu.Item>*/}
+                    {/*    </>*/}
+                    {/*)}*/}
 
                 </Menu.Menu>
                 <Outlet />

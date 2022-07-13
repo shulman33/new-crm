@@ -30,7 +30,7 @@ export default function SignInBusiness({businessAuth}) {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const user = new CognitoUser({
+        const business = new CognitoUser({
             Username: email,
             Pool: BussinessUserPool
         });
@@ -39,10 +39,11 @@ export default function SignInBusiness({businessAuth}) {
             Password: password
         });
 
-        user.authenticateUser(authDetails, {
+        business.authenticateUser(authDetails, {
             onSuccess: data => {
                 console.log("YOU LOGGED IN AND NO ONE CARES:", data);
-                businessAuth()
+                businessAuth(business)
+                localStorage.setItem('business', JSON.stringify(business))
                 navigate("/businessdashboard")
             },
 

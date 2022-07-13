@@ -31,7 +31,7 @@ export default function SignInCustomer({customerAuth}) {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const user = new CognitoUser({
+        const customer = new CognitoUser({
             Username: email,
             Pool: CustomerUserPool
         });
@@ -40,10 +40,11 @@ export default function SignInCustomer({customerAuth}) {
             Password: password
         });
 
-        user.authenticateUser(authDetails, {
+        customer.authenticateUser(authDetails, {
             onSuccess: data => {
                 console.log("YOU LOGGED IN:", data);
-                customerAuth()
+                customerAuth(customer)
+                localStorage.setItem('customer', JSON.stringify(customer))
                 navigate("/CustomerWelcome")
             },
 
