@@ -41,8 +41,7 @@ export default function Businesses() {
             <Segment className='segment' style={{display: 'flex'}}>
                 <Grid className='main' columns={1} relaxed='very'>
                     <Grid.Column>
-                        <div className="featured"></div>
-                        <Card.Group>
+                        <Card.Group centered>
                             <BusinessCards businesses={businesses}/>
                         </Card.Group>
                     </Grid.Column>

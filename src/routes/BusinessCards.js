@@ -11,7 +11,7 @@ export default function BusinessCards(props) {
                 businesses.map((business) => {
                     console.log(business);
                     return(
-                        <Card style={{width: '84vh'}}>
+                        <Card>
                             <Card.Content>
                                 <Card.Header>{business.businessName.S}</Card.Header>
                                 <Card.Description>{business.description.S}</Card.Description>
@@ -30,16 +30,6 @@ export default function BusinessCards(props) {
         } else {
             return(
                 <div>
-                    <section className="Participating-Businesses">
-                        <p className="intro">
-                            <h1>Participating Businesses</h1>
-                            <h2>Below are all the participating businesses.</h2>
-                            <h3>
-                                Don't see your favorite business?
-                                <a href="./AboutUs"> Contact Us!</a>
-                            </h3>
-                        </p>
-                    </section>
                     <Segment className='segment'>
                         <h1>There are no participating businesses at this time.</h1>
                         <h1>We apologize for the inconvenience.</h1>
