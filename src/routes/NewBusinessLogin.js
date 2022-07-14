@@ -17,6 +17,7 @@ import BussinessUserPool from "../utils/BussinessUserPool";
 import Alert from '@mui/material/Alert';
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
+import axios from "axios";
 
 const theme = createTheme();
 
@@ -41,9 +42,13 @@ export default function SignInBusiness({businessAuth}) {
 
         business.authenticateUser(authDetails, {
             onSuccess: data => {
+                const username = business.getUsername()
                 console.log("YOU LOGGED IN AND NO ONE CARES:", data);
                 businessAuth(business)
                 localStorage.setItem('business', JSON.stringify(business))
+                console.log(`this is the email ${email}`)
+                console.log(`this is the username ${username}`)
+                updateUserId(username)
                 navigate("/businessdashboard")
             },
 
@@ -57,6 +62,47 @@ export default function SignInBusiness({businessAuth}) {
             }
         });
     };
+
+    const updateUserId = (username) => {
+        const jsonGet = {
+            "TableName": "BusinessUserDB",
+            "Key": {
+                "businessId": {
+                    "S": email
+                }
+            }
+        }
+
+        const jsonUpdate = {
+            "TableName": "BusinessUserDB",
+            "Key": {
+                "businessId": {
+                    "S": email
+                }
+            },
+            "UpdateExpression": "SET businessId=:val1",
+            "ExpressionAttributeValues": {
+                ":val1": {"S": username}
+            }
+        }
+
+        let e;
+        axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/get', jsonGet)
+            .then(response => {
+                console.log(response);
+                e = response.data.Item.businessId.S;
+                console.log(e);
+                console.log(username);
+                if (e === email) {
+                    console.log('update');
+                    axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/update', jsonUpdate)
+                        .then(response => {
+                            console.log(jsonUpdate);
+                            console.log(response);
+                        });
+                }
+            });
+    }
 
     return (
         <ThemeProvider theme={theme}>

@@ -9,7 +9,6 @@ export default function BusinessCards(props) {
         if (businesses.length > 0) {
             return(
                 businesses.map((business) => {
-                    console.log(business);
                     return(
                         <Card>
                             <Card.Content>

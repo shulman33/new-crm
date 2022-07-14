@@ -64,7 +64,7 @@ function App() {
         await Auth.signOut()
     }
 
-  return (
+    return (
 
         <div className="App">
             <nav>
@@ -119,32 +119,31 @@ function App() {
                     </Menu.Menu>
                 </Menu>
             </nav>
-          <Routes>
-              {(!customer && !business) && <Route path="/" element={<LandingPage />} />}}
-              {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
-              {business && (
-                  <>
-                      <Route path="businessdashboard" element={<Dashboard />} />
-                  </>
-              )}
-              <Route path="BusinessSignUp" element={<SignUpBusiness />} />
-              {!customer && <Route path="CustomerLogin" element={<SignInCustomer customerAuth={() => setCustomer(true)}/>} />}
-              {customer && (
-                  <>
-                      <Route path="CustomerWelcome" element={<CustomerWelcomeP customerLogout={() => setCustomer(false)}/>} />
-                  </>
-              )}
+            <Routes>
+                {(!customer && !business) && <Route path="/" element={<LandingPage />} />}}
+                {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
+                {business && (
+                    <>
+                        <Route path="businessdashboard" element={<Dashboard />} />
+                    </>
+                )}
+                <Route path="BusinessSignUp" element={<SignUpBusiness />} />
+                {!customer && <Route path="CustomerLogin" element={<SignInCustomer customerAuth={() => setCustomer(true)}/>} />}
+                {customer && (
+                    <>
+                        <Route path="CustomerWelcome" element={<CustomerWelcomeP customerLogout={() => setCustomer(false)}/>} />
+                    </>
+                )}
 
-              <Route path="CustomerSignup" element={<SignUpCustomer />} />
-              <Route path="aboutus" element={<AboutUs />} />
-              <Route path="Faq" element={<Faq />} />
-              <Route path="businesses" element={<Businesses />} />
-              <Route path="*" element={ routing } />
-          </Routes>
+                <Route path="CustomerSignup" element={<SignUpCustomer />} />
+                <Route path="aboutus" element={<AboutUs />} />
+                <Route path="Faq" element={<Faq />} />
+                <Route path="businesses" element={<Businesses />} />
+                <Route path="*" element={ routing } />
+            </Routes>
             <Footer />
         </div>
-  );
+    );
 }
 
 export default App;
-
