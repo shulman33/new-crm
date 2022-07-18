@@ -48,8 +48,8 @@ export default function SignInBusiness({businessAuth}) {
                 localStorage.setItem('business', JSON.stringify(business))
                 console.log(`this is the email ${email}`)
                 console.log(`this is the username ${username}`)
-                updateUserId(username)
-                navigate("/businessdashboard")
+                localStorage.setItem('userId', email);
+                navigate("/businessprofile")
             },
 
             onFailure: err => {
@@ -62,47 +62,6 @@ export default function SignInBusiness({businessAuth}) {
             }
         });
     };
-
-    const updateUserId = (username) => {
-        const jsonGet = {
-            "TableName": "BusinessUserDB",
-            "Key": {
-                "businessId": {
-                    "S": email
-                }
-            }
-        }
-
-        const jsonUpdate = {
-            "TableName": "BusinessUserDB",
-            "Key": {
-                "businessId": {
-                    "S": email
-                }
-            },
-            "UpdateExpression": "SET businessId=:val1",
-            "ExpressionAttributeValues": {
-                ":val1": {"S": username}
-            }
-        }
-
-        let e;
-        axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/get', jsonGet)
-            .then(response => {
-                console.log(response);
-                e = response.data.Item.businessId.S;
-                console.log(e);
-                console.log(username);
-                if (e === email) {
-                    console.log('update');
-                    axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/update', jsonUpdate)
-                        .then(response => {
-                            console.log(jsonUpdate);
-                            console.log(response);
-                        });
-                }
-            });
-    }
 
     return (
         <ThemeProvider theme={theme}>
