@@ -1,14 +1,14 @@
 import React from 'react';
 import {Button, Card, Segment, Dimmer, Loader} from "semantic-ui-react";
 
-export default function BusinessCards(props) {
+export default function AllBusinessCards(props) {
 
     const displayCards = (props) => {
         const {businesses} = props;
 
         if (businesses.length > 0) {
             return(
-                businesses.slice(0,8).map((business) => {
+                businesses.map((business) => {
                     console.log(business);
                     return(
                         <Card>
@@ -29,15 +29,12 @@ export default function BusinessCards(props) {
             )
         } else {
             return(
-                <div>
-                    <Segment className='segment'>
-                        <div style={{marginTop: '5vh', marginBottom: '5vh', width: '100%'}}>
+                <div style={{marginTop: '5vh', marginBottom: '5vh', width: '100%'}}>
 
-                            <Dimmer active inverted>
-                                <Loader style={{color: 'mediumseagreen'}} size='large'>Loading</Loader>
-                            </Dimmer>
-                        </div>
-                    </Segment>
+                    <Dimmer active inverted>
+                        <Loader style={{color: 'mediumseagreen'}} size='large'>Loading</Loader>
+                    </Dimmer>
+
                 </div>
             )
         }

@@ -21,6 +21,7 @@ import Dashboard from "./routes/Dashboard";
 import {useEffect, useState} from "react";
 import {Button, Input, Menu} from 'semantic-ui-react'
 import React from "react";
+import Searchbar from "./routes/Searchbar";
 
 
 
@@ -84,7 +85,8 @@ function App() {
                     </Menu.Item>
                     <Menu.Menu position='right'>
                         <Menu.Item>
-                            <Input className='icon' icon='search' placeholder='Search...' />
+                            {/*<Input className='icon' icon='search' placeholder='Search...' />*/}
+                            <Searchbar/>
                         </Menu.Item>
                         {!customer && !business && (
                             <>
