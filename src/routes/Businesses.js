@@ -5,14 +5,13 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import AllBusinessCards from "./AllBusinessCards";
 
-
-export default function Businesses() {
+function Businesses() {
 
     const [businesses, setBusinesses] = useState('');
 
     useEffect(() => {
         getAllBusinesses();
-    });
+    }, []);
 
     const jsonData = {
         "TableName": "BusinessUserDB"
@@ -51,3 +50,5 @@ export default function Businesses() {
         </div>
     )
 }
+
+export default React.memo(Businesses);

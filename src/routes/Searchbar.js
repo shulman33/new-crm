@@ -53,7 +53,7 @@ function exampleReducer(state, action) {
 function SearchBar() {
     useEffect(() => {
         getAllBusinesses();
-    });
+    }, []);
     const [state, dispatch] = React.useReducer(exampleReducer, initialState)
     const { loading, results, value } = state
 

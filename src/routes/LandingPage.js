@@ -14,7 +14,7 @@ export default function LandingPage(){
 
     useEffect(() => {
         getAllBusinesses();
-    });
+    }, []);
 
     const jsonData = {
         "TableName": "BusinessUserDB"
