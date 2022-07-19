@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Card, Segment, Dimmer, Loader} from "semantic-ui-react";
 
-export default function BusinessCards(props) {
+function BusinessCards(props) {
 
     const displayCards = (props) => {
         const {businesses} = props;
@@ -49,3 +49,5 @@ export default function BusinessCards(props) {
         </>
     )
 }
+
+export default React.memo(BusinessCards);

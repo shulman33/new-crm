@@ -21,6 +21,7 @@ export default function Businesses() {
     const getAllBusinesses = () => {
         axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/scan', jsonData)
             .then(response => {
+                console.log(response);
                 const allBusinesses = response.data.Items;
                 setBusinesses(allBusinesses);
             });
