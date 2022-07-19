@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Button, Card, Grid, Image, Segment} from "semantic-ui-react";
 import './CustomerWelcomeP.css'
 import {Auth} from "aws-amplify";
@@ -20,9 +20,8 @@ export default function CustomerWelcomeP({customerLogout}) {
             <div>
                 <section className="Welcome-Section">
                     <p>
-                        <h1 style={{fontFamily: 'Bebas Neue', fontSize: '10vh', color: 'white'}}>Welcome to your profile</h1>
+                        <h1 style={{fontFamily: 'Bebas Neue', fontSize: '10vh', color: 'white'}}>Welcome to your profile </h1>
                         <h2 style={{fontFamily: 'Bebas Neue', fontSize: '4vh', color: 'white'}}>View your badges and special perks!</h2>
-                        <Button onClick={handleLogout} inverted>Logout</Button>
                     </p>
                 </section>
                 <Segment className='segment'>
