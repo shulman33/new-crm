@@ -1,14 +1,15 @@
-import React from 'react';
-import {Button, Card, Segment, Dimmer, Loader} from "semantic-ui-react";
+import React, {useState} from 'react';
+import {Button, Card, Segment, Dimmer, Loader, Modal, Header} from "semantic-ui-react";
 
 function BusinessCards(props) {
-
+    const [open, setOpen] = useState(false)
     const displayCards = (props) => {
         const {businesses} = props;
 
+
         if (businesses.length > 0) {
             return(
-                businesses.slice(0,8).map((business) => {
+                businesses.slice(0,14).map((business) => {
                     console.log(business);
                     return(
                         <Card>
@@ -18,9 +19,34 @@ function BusinessCards(props) {
                             </Card.Content>
                             <Card.Content extra>
                                 <div className='ui-button'>
-                                    <Button basic color='green'>
-                                        Follow Us
-                                    </Button>
+                                    <Modal
+                                        onClose={() => setOpen(false)}
+                                        onOpen={() => setOpen(true)}
+                                        open={open}
+                                        trigger={<Button color={'green'} inverted>Visit Us</Button>}
+                                    >
+                                        <Modal.Header>Welcome to {business.businessName.S}</Modal.Header>
+                                        <Modal.Content>
+                                            <Modal.Description>
+                                                <Header>Badges?</Header>
+                                                <p>
+                                                    Maybe put some badges here?
+                                                </p>
+                                                <Header>Come visit us at</Header>
+                                                <p>
+                                                    David put the Google Maps here please.
+                                                </p>
+                                            </Modal.Description>
+                                        </Modal.Content>
+                                        <Modal.Actions>
+                                            <Button
+                                                icon='close'
+                                                onClick={() => setOpen(false)}
+                                                negative
+                                            />
+                                        </Modal.Actions>
+
+                                    </Modal>
                                 </div>
                             </Card.Content>
                         </Card>
