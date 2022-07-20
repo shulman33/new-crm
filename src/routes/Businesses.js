@@ -2,17 +2,16 @@ import React, {useEffect, useState} from 'react'
 import {Card, Grid, Segment} from "semantic-ui-react";
 import './Businesses.css';
 import axios from "axios";
-import BusinessCards from "./BusinessCards";
 import {Link} from "react-router-dom";
+import AllBusinessCards from "./AllBusinessCards";
 
-
-export default function Businesses() {
+function Businesses() {
 
     const [businesses, setBusinesses] = useState('');
 
     useEffect(() => {
         getAllBusinesses();
-    });
+    }, []);
 
     const jsonData = {
         "TableName": "BusinessUserDB"
@@ -21,6 +20,7 @@ export default function Businesses() {
     const getAllBusinesses = () => {
         axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/scan', jsonData)
             .then(response => {
+                console.log(response);
                 const allBusinesses = response.data.Items;
                 setBusinesses(allBusinesses);
             });
@@ -42,7 +42,7 @@ export default function Businesses() {
                 <Grid className='main' columns={1} relaxed='very'>
                     <Grid.Column>
                         <Card.Group centered>
-                            <BusinessCards businesses={businesses}/>
+                            <AllBusinessCards businesses={businesses}/>
                         </Card.Group>
                     </Grid.Column>
                 </Grid>
@@ -50,3 +50,5 @@ export default function Businesses() {
         </div>
     )
 }
+
+export default React.memo(Businesses);
