@@ -29,6 +29,46 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
 
+  const generateJsonData = (pictureName, business)=> {
+    const date = new Date();
+    return {
+        "TableName": "BadgeDB",
+        "Item": {
+            "badgeId": {
+                "S": pictureName
+            },
+            "Business": {
+                "S": business
+            },
+            "DateOfCreation": {
+                "S": date
+            },
+            "CurrentOwner": {
+              "S": "None"
+            }
+        }
+    }
+  };
+  
+  function generateBadge(descriptions, business, numberBadge){
+    const pictureName = business + numberBadge;
+    const s3URL = "https://1v74t44h9b.execute-api.us-east-1.amazonaws.com/S3Test/badgepicscontainer/" + pictureName +  ".jpeg";
+    axios.get("https://loremflickr.com/200/200" + descriptions, {responseType: "blob"})
+        .then((response) => {
+          console.log(response)
+          axios({
+            method : 'put',
+            url : s3URL,
+            headers : {'Content-Type' : 'image/jpeg'},
+            data : response.data
+          })
+          .then(response => {
+            console.log(response);
+          });
+        });
+    axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/post', generateJsonData(pictureName, business))
+  }
+  
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
