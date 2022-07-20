@@ -21,7 +21,7 @@ import Dashboard from "./routes/Dashboard";
 import {useEffect, useState} from "react";
 import {Button, Input, Menu} from 'semantic-ui-react'
 import React from "react";
-import BusinessProfile from "./routes/BusinessProfile";
+import Searchbar from "./routes/Searchbar";
 
 
 
@@ -54,7 +54,7 @@ function App() {
     }else if (customer && !business){
         routing = <Navigate to='/CustomerWelcome' />
     }else if(business && !customer){
-        routing = <Navigate to='/businessprofile' />
+        routing = <Navigate to='/businessdashboard' />
     }
 
     async function handleLogout(){
@@ -65,7 +65,7 @@ function App() {
         await Auth.signOut()
     }
 
-    return (
+  return (
 
         <div className="App">
             <nav>
@@ -85,7 +85,8 @@ function App() {
                     </Menu.Item>
                     <Menu.Menu position='right'>
                         <Menu.Item>
-                            <Input className='icon' icon='search' placeholder='Search...' />
+                            {/*<Input className='icon' icon='search' placeholder='Search...' />*/}
+                            <Searchbar/>
                         </Menu.Item>
                         {!customer && !business && (
                             <>
@@ -120,31 +121,32 @@ function App() {
                     </Menu.Menu>
                 </Menu>
             </nav>
-            <Routes>
-                {(!customer && !business) && <Route path="/" element={<LandingPage />} />}}
-                {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
-                {business && (
-                    <>
-                        <Route path="businessprofile" element={<BusinessProfile />} />
-                    </>
-                )}
-                <Route path="BusinessSignUp" element={<SignUpBusiness />} />
-                {!customer && <Route path="CustomerLogin" element={<SignInCustomer customerAuth={() => setCustomer(true)}/>} />}
-                {customer && (
-                    <>
-                        <Route path="CustomerWelcome" element={<CustomerWelcomeP customerLogout={() => setCustomer(false)}/>} />
-                    </>
-                )}
+          <Routes>
+              {(!customer && !business) && <Route path="/" element={<LandingPage />} />}}
+              {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
+              {business && (
+                  <>
+                      <Route path="businessdashboard" element={<Dashboard />} />
+                  </>
+              )}
+              <Route path="BusinessSignUp" element={<SignUpBusiness />} />
+              {!customer && <Route path="CustomerLogin" element={<SignInCustomer customerAuth={() => setCustomer(true)}/>} />}
+              {customer && (
+                  <>
+                      <Route path="CustomerWelcome" element={<CustomerWelcomeP customerLogout={() => setCustomer(false)}/>} />
+                  </>
+              )}
 
-                <Route path="CustomerSignup" element={<SignUpCustomer />} />
-                <Route path="aboutus" element={<AboutUs />} />
-                <Route path="Faq" element={<Faq />} />
-                <Route path="businesses" element={<Businesses />} />
-                <Route path="*" element={ routing } />
-            </Routes>
+              <Route path="CustomerSignup" element={<SignUpCustomer />} />
+              <Route path="aboutus" element={<AboutUs />} />
+              <Route path="Faq" element={<Faq />} />
+              <Route path="businesses" element={<Businesses />} />
+              <Route path="*" element={ routing } />
+          </Routes>
             <Footer />
         </div>
-    );
+  );
 }
 
 export default App;
+
