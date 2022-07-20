@@ -81,11 +81,6 @@ function App() {
                         <Link to="/Businesses" style={{color: 'black'}}> Businesses </Link>
                     </Menu.Item>
                     <Menu.Item
-                        name='Map'
-                    >
-                        <Link to="/Map" style={{color: 'black'}}> Map </Link>
-                    </Menu.Item>
-                    <Menu.Item
                         name='About Us'
                     >
                         <Link to="/AboutUs" style={{color: 'black'}}> About Us </Link>
