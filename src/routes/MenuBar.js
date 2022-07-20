@@ -3,6 +3,7 @@ import {Button, Input, Menu} from 'semantic-ui-react'
 import {Auth} from "aws-amplify";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 
+import Home from Map;
 export default function MenuBar({setBoth}) {
     // const navigate = useNavigate();
     // const [customer, setCustomer] = useState(false)
@@ -26,6 +27,11 @@ export default function MenuBar({setBoth}) {
                     name='Businesses'
                 >
                     <Link to="/Businesses" style={{color: 'black'}}> Businesses </Link>
+                </Menu.Item>
+                <Menu.Item
+                    name='Map'
+                >
+                    <Link to="/Map" style={{color: 'black'}}> Map </Link>
                 </Menu.Item>
                 <Menu.Item
                     name='About Us'

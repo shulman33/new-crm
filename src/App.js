@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Footer from "./routes/Footer";
 import AboutUs from "./routes/AboutUs";
+import Map from "./routes/Map";
 import Faq from "./routes/Faq";
 import CustomerWelcomeP from "./routes/CustomerWelcomeP";
 import Businesses from "./routes/Businesses";
@@ -22,6 +23,7 @@ import {useEffect, useState} from "react";
 import {Button, Input, Menu} from 'semantic-ui-react'
 import React from "react";
 import Searchbar from "./routes/Searchbar";
+import Home from "./routes/Map";
 
 
 
@@ -79,6 +81,11 @@ function App() {
                         <Link to="/Businesses" style={{color: 'black'}}> Businesses </Link>
                     </Menu.Item>
                     <Menu.Item
+                        name='Map'
+                    >
+                        <Link to="/Map" style={{color: 'black'}}> Map </Link>
+                    </Menu.Item>
+                    <Menu.Item
                         name='About Us'
                     >
                         <Link to="/AboutUs" style={{color: 'black'}}> About Us </Link>
@@ -122,7 +129,7 @@ function App() {
                 </Menu>
             </nav>
           <Routes>
-              {(!customer && !business) && <Route path="/" element={<LandingPage />} />}}
+              {(!customer && !business) && <Route path="/" element={<LandingPage />} />}
               {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
               {business && (
                   <>
@@ -141,6 +148,7 @@ function App() {
               <Route path="aboutus" element={<AboutUs />} />
               <Route path="Faq" element={<Faq />} />
               <Route path="businesses" element={<Businesses />} />
+              <Route path="map" element={<Map />} />
               <Route path="*" element={ routing } />
           </Routes>
             <Footer />
