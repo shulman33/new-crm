@@ -56,7 +56,7 @@ function DashboardContent() {
     }
 
     function generateBadge(descriptions, perks, price, business, numberBadge){
-      price = "$" + price.replace(/\D/g,'');
+      price = "$" + price.replace(/[^\d.]/g,'');
       const pictureName = business + numberBadge;
       const s3URL = "https://1v74t44h9b.execute-api.us-east-1.amazonaws.com/S3Test/badgepicscontainer/" + pictureName +  ".jpeg";
       axios.get("https://loremflickr.com/200/200" + descriptions, {responseType: "blob"})
