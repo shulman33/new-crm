@@ -40,8 +40,8 @@ function DashboardContent() {
     function onClick(event) {
         event.preventDefault();
         setOpen(false);
-        generateBadge('/' + {description}, 'Hii', '7');
-        console.log('/' + {description});
+        generateBadge('/' + description.valueOf(), 'coffee', '7');
+        console.log('/'+description.valueOf());
     }
 
     function generateBadge(descriptions, business, numberBadge){
@@ -128,7 +128,7 @@ function DashboardContent() {
                                 <Form>
                                     <Form.Field>
                                         <label>Badge Description</label>
-                                        <input placeholder='Badge Description' onChange={(e) => setDescription(e.target.value)}/>
+                                        <input placeholder='Badge Description' onChange={(e) => setDescription( e.target.value)}/>
                                     </Form.Field>
                                 </Form>
                             </Modal.Content>
