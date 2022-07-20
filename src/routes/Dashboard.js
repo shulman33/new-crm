@@ -18,49 +18,61 @@ function DashboardContent() {
 
     const [open, setOpen] = useState(false);
     const [description, setDescription] = useState('');
-
-    const generateJsonData = (pictureName, business)=> {
-        const date = new Date();
-        return {
-            "TableName": "BadgeDB",
-            "Item": {
-                "badgeId": {
-                    "S": pictureName
-                },
-                "Business": {
-                    "S": business
-                },
-                "dateOfCreation": {
-                    "S": date
-                }
-            }
-        }
+    
+    
+    
+    const generateJsonData = (pictureName, perks, price, business)=> {
+      const date = new Date();
+      return {
+          "TableName": "BadgeDB",
+          "Item": {
+              "badgeId": {
+                  "S": pictureName
+              },
+              "Business": {
+                  "S": business
+              },
+              "DateOfCreation": {
+                  "S": date
+              },
+              "CurrentOwner": {
+                "S": "None"
+              },
+              "Price": {
+                "S": price
+              },
+              "Perks": {
+                "S": perks
+              }
+          }
+      }
     };
 
     function onClick(event) {
         event.preventDefault();
         setOpen(false);
-        generateBadge('/' + description.valueOf(), 'coffee', '7');
+        generateBadge('/' + description.valueOf(), 'Customer gets a free coffee once a week and free tickets to the coffee show on 7/27/22' , '99.99', 'coffee', '7');
         console.log('/'+description.valueOf());
     }
 
-    function generateBadge(descriptions, business, numberBadge){
-        const pictureName = business + numberBadge;
-        const s3URL = "https://1v74t44h9b.execute-api.us-east-1.amazonaws.com/S3Test/badgepicscontainer/" + pictureName +  ".jpeg";
-        axios.get("https://loremflickr.com/200/200" + descriptions, {responseType: "blob"})
-            .then((response) => {
-                console.log(response)
-                axios({
-                    method : 'put',
-                    url : s3URL,
-                    headers : {'Content-Type' : 'image/jpeg'},
-                    data : response.data
-                })
-                    .then(response => {
-                        console.log(response);
-                    });
+    function generateBadge(descriptions, perks, price, business, numberBadge){
+      price = "$" + price.replace(/\D/g,'');
+      const pictureName = business + numberBadge;
+      const s3URL = "https://1v74t44h9b.execute-api.us-east-1.amazonaws.com/S3Test/badgepicscontainer/" + pictureName +  ".jpeg";
+      axios.get("https://loremflickr.com/200/200" + descriptions, {responseType: "blob"})
+          .then((response) => {
+            console.log(response)
+            axios({
+              method : 'put',
+              url : s3URL,
+              headers : {'Content-Type' : 'image/jpeg'},
+              data : response.data
+            })
+            .then(response => {
+              console.log(response);
             });
-        axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/post', generateJsonData(pictureName, business))
+          });
+      axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/post', generateJsonData(pictureName, perks, price, business))
     }
 
     return (
@@ -108,14 +120,6 @@ function DashboardContent() {
                                     <Deposits />
                                 </Paper>
                             </Grid>
-                            {/* Current Badges */}
-                            {/*<Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>*/}
-                            {/*    <Button onClick={() => {*/}
-                            {/*        generateBadge('/coffee,boy', 'Yeshiva University', '7');*/}
-                            {/*    }}>*/}
-                            {/*        Generate a New Badge*/}
-                            {/*    </Button>*/}
-                            {/*</Paper>*/}
                         </Grid>
                         <Modal
                             onClose={() => setOpen(false)}
@@ -138,16 +142,12 @@ function DashboardContent() {
                                     icon='close'
                                     color={'red'}
                                     onClick={() => setOpen(false)}
-
-
                                 />
                                 <B
                                     content='Generate'
                                     icon='checkmark'
                                     color={'green'}
                                     onClick={onClick}
-
-
                                 />
 
                             </Modal.Actions>
