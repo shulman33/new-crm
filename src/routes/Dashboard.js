@@ -75,6 +75,24 @@ function DashboardContent() {
       axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/post', generateJsonData(pictureName, perks, price, business))
     }
 
+    function generateJsonScanData(businessName){
+      return {
+        "TableName": "BadgeDB",
+        "FilterExpression": "businessId = :val",
+        "ExpressionAttributeValues": {":val": {"S": businessName}}
+      }
+    }
+  
+    function getBusinessesBadgeCards(businessName){
+      axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/scan', generateJsonScanData(businessName))
+        .then((response) => {
+          const badgeResponseJson = response.data.Items;
+          setBusinesseBadges(badgeResponseJson);
+        });
+    }
+  
+    const [businesseBadges, setBusinesseBadges] = useState('');
+
     return (
         <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
