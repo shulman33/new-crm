@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import axios from "axios";
-import {Modal, Button as B, Form} from "semantic-ui-react";
+import {Modal, Button as B, Form, Input, Label, Divider} from "semantic-ui-react";
 import {useState} from "react";
 
 const mdTheme = createTheme();
@@ -18,80 +18,103 @@ function DashboardContent() {
 
     const [open, setOpen] = useState(false);
     const [description, setDescription] = useState('');
-    
-    
-    
+    const [price, setPrice] = useState(null);
+    const [perks, setPerks] = useState('');
+    const [image, setImage] = useState([]);
+    const [businesseBadges, setBusinessesBadges] = useState('');
+
+
+
     const generateJsonData = (pictureName, perks, price, business)=> {
-      const date = new Date();
-      return {
-          "TableName": "BadgeDB",
-          "Item": {
-              "badgeId": {
-                  "S": pictureName
-              },
-              "Business": {
-                  "S": business
-              },
-              "DateOfCreation": {
-                  "S": date
-              },
-              "CurrentOwner": {
-                "S": "None"
-              },
-              "Price": {
-                "S": price
-              },
-              "Perks": {
-                "S": perks
-              }
-          }
-      }
+        const date = new Date();
+        return {
+            "TableName": "BadgeDB",
+            "Item": {
+                "badgeId": {
+                    "S": pictureName
+                },
+                "Business": {
+                    "S": business
+                },
+                "DateOfCreation": {
+                    "S": date
+                },
+                "CurrentOwner": {
+                    "S": "None"
+                },
+                "Price": {
+                    "S": price
+                },
+                "Perks": {
+                    "S": perks
+                }
+            }
+        }
     };
 
     function onClick(event) {
         event.preventDefault();
         setOpen(false);
-        generateBadge('/' + description.valueOf(), 'Customer gets a free coffee once a week and free tickets to the coffee show on 7/27/22' , '99.99', 'coffee', '7');
+        generateBadge('/' + description.valueOf(), perks.valueOf() , price.valueOf(), 'coffee', '7');
         console.log('/'+description.valueOf());
+        console.log('perks: ' + perks.valueOf());
+        console.log('price: ' + price.valueOf());
     }
 
     function generateBadge(descriptions, perks, price, business, numberBadge){
-      price = "$" + price.replace(/[^\d.]/g,'');
-      const pictureName = business + numberBadge;
-      const s3URL = "https://1v74t44h9b.execute-api.us-east-1.amazonaws.com/S3Test/badgepicscontainer/" + pictureName +  ".jpeg";
-      axios.get("https://loremflickr.com/200/200" + descriptions, {responseType: "blob"})
-          .then((response) => {
-            console.log(response)
-            axios({
-              method : 'put',
-              url : s3URL,
-              headers : {'Content-Type' : 'image/jpeg'},
-              data : response.data
-            })
-            .then(response => {
-              console.log(response);
+        price = "$" + price.replace(/[^\d.]/g,'');
+        const pictureName = business + numberBadge;
+        const s3URL = "https://1v74t44h9b.execute-api.us-east-1.amazonaws.com/S3Test/badgepicscontainer/" + pictureName +  ".jpeg";
+        axios.get("https://loremflickr.com/200/200" + descriptions, {responseType: "blob"})
+            .then((response) => {
+                console.log(response)
+                axios({
+                    method : 'put',
+                    url : s3URL,
+                    headers : {'Content-Type' : 'image/jpeg'},
+                    data : response.data
+                })
+                    .then(response => {
+                        console.log(response);
+                    });
             });
-          });
-      axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/post', generateJsonData(pictureName, perks, price, business))
+        axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/post', generateJsonData(pictureName, perks, price, business))
     }
 
     function generateJsonScanData(businessName){
-      return {
-        "TableName": "BadgeDB",
-        "FilterExpression": "businessId = :val",
-        "ExpressionAttributeValues": {":val": {"S": businessName}}
-      }
+        return {
+            "TableName": "BadgeDB",
+            "FilterExpression": "businessId = :val",
+            "ExpressionAttributeValues": {":val": {"S": businessName}}
+        }
     }
-  
+
     function getBusinessesBadgeCards(businessName){
-      axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/scan', generateJsonScanData(businessName))
-        .then((response) => {
-          const badgeResponseJson = response.data.Items;
-          setBusinesseBadges(badgeResponseJson);
-        });
+        axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/scan', generateJsonScanData(businessName))
+            .then((response) => {
+                const badgeResponseJson = response.data.Items;
+                setBusinessesBadges(badgeResponseJson);
+            });
     }
-  
-    const [businesseBadges, setBusinesseBadges] = useState('');
+    function onImageChange(event) {
+        setImage([...event.target.files]);
+
+    }
+    function uploadBadge(){
+        const s3URL = "https://1v74t44h9b.execute-api.us-east-1.amazonaws.com/S3Test/badgepicscontainer/bh.jpeg";
+        axios({
+            method : 'put',
+            url : s3URL,
+            headers : {'Content-Type' : 'image/jpeg'},
+            data : image[0].valueOf()
+        }).then(response => {
+            console.log('uploaded');
+        })
+
+        axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/post', generateJsonData("somename", perks.valueOf(), price.valueOf(), "construction")).then(r => {
+            console.log("DB Posted")
+        })
+    }
 
     return (
         <ThemeProvider theme={mdTheme}>
@@ -145,31 +168,92 @@ function DashboardContent() {
                             open={open}
                             trigger={<B color={'green'}>Generate Badge</B>}
                         >
-                            <Modal.Header>Give a badge description</Modal.Header>
+                            <Modal.Header>Generate Badge Image</Modal.Header>
                             <Modal.Content>
                                 <Form>
-                                    <Form.Field>
-                                        <label>Badge Description</label>
-                                        <input placeholder='Badge Description' onChange={(e) => setDescription( e.target.value)}/>
-                                    </Form.Field>
+                                    <Form.Group>
+                                        <Form.Field width={12}>
+                                            <label>Badge Description</label>
+                                            <input placeholder='Badge Description' onChange={(e) => setDescription( e.target.value)}/>
+                                        </Form.Field>
+
+                                        <Form.Field width={4} style={{marginTop: '1.6em'}}>
+                                            <Input labelPosition='right' type='text' placeholder='Badge Price' onChange={(e) => setPrice(e.target.value)}>
+                                                <Label basic>$</Label>
+                                                <input />
+                                                <Label>.00</Label>
+                                            </Input>
+                                        </Form.Field>
+
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Field width={12}>
+                                            <label>Perk</label>
+                                            <input placeholder='Badge Perk' onChange={(e) => setPerks(e.target.value)}/>
+                                        </Form.Field>
+
+                                        <Form.Field >
+                                            <Modal.Actions>
+                                                <B
+                                                    style={{marginTop: '1.6em', marginLeft: '1.6em'}}
+                                                    content='Generate Badge'
+                                                    icon='checkmark'
+                                                    color={'green'}
+                                                    onClick={onClick}
+                                                />
+                                            </Modal.Actions>
+                                        </Form.Field>
+                                    </Form.Group>
+                                </Form>
+
+
+                                <Divider horizontal>Or</Divider>
+                                <Form>
+                                    <Form.Group >
+                                        <Form.Field width={8}>
+                                            <label>Upload jpg image</label>
+                                            <Input
+                                                type='file'
+                                                multiple accept="image/*"
+                                                onChange={onImageChange}
+
+                                            />
+                                        </Form.Field>
+                                        <Form.Field width={4} style={{marginTop: '1.6em'}}>
+                                            <Input labelPosition='right' type='text' placeholder='Badge Price' onChange={(e) => setPrice(e.target.value)}>
+                                                <Label basic>$</Label>
+                                                <input />
+                                                <Label>.00</Label>
+                                            </Input>
+                                        </Form.Field>
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Field width={12}>
+                                            <label>Perk</label>
+                                            <input placeholder='Badge Perk' onChange={(e) => setPerks(e.target.value)}/>
+                                        </Form.Field>
+                                        <Form.Field>
+                                            <Modal.Actions>
+                                                <B
+                                                    style={{marginTop: '1.6em', marginLeft: '1.6em'}}
+                                                    content='Upload Badge'
+                                                    icon='upload'
+                                                    color={'green'}
+                                                    onClick={uploadBadge}
+                                                />
+
+                                            </Modal.Actions>
+                                        </Form.Field>
+                                    </Form.Group>
                                 </Form>
                             </Modal.Content>
                             <Modal.Actions>
                                 <B
-                                    content='Cancel'
                                     icon='close'
                                     color={'red'}
                                     onClick={() => setOpen(false)}
                                 />
-                                <B
-                                    content='Generate'
-                                    icon='checkmark'
-                                    color={'green'}
-                                    onClick={onClick}
-                                />
-
                             </Modal.Actions>
-
                         </Modal>
                     </Container>
                 </Box>
