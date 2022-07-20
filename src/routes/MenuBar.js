@@ -3,6 +3,7 @@ import {Button, Input, Menu} from 'semantic-ui-react'
 import {Auth} from "aws-amplify";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 
+import Home from Map;
 export default function MenuBar({setBoth}) {
     // const navigate = useNavigate();
     // const [customer, setCustomer] = useState(false)

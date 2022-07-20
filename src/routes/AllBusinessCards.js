@@ -1,6 +1,8 @@
 import React from 'react';
 import {Button, Card, Segment, Dimmer, Loader, Modal, Header} from "semantic-ui-react";
 import {useState} from "react";
+import Map from "./Map";
+
 
 function AllBusinessCards(props) {
     const [open, setOpen] = useState(false)
@@ -34,9 +36,7 @@ function AllBusinessCards(props) {
                                                     Maybe put some badges here?
                                                 </p>
                                                 <Header>Come visit us at</Header>
-                                                <p>
-                                                    David put the Google Maps here please.
-                                                </p>
+                                                    <Map></Map>
                                             </Modal.Description>
                                         </Modal.Content>
                                         <Modal.Actions>
