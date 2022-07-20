@@ -2,14 +2,13 @@ import * as React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import axios from "axios";
-import {Modal, Button as B, Form, Input, Label, Divider} from "semantic-ui-react";
+import {Modal, Button as B, Form, Input, Label, Divider, Image} from "semantic-ui-react";
 import {useState} from "react";
 
 const mdTheme = createTheme();
@@ -21,7 +20,8 @@ function DashboardContent() {
     const [price, setPrice] = useState(null);
     const [perks, setPerks] = useState('');
     const [image, setImage] = useState([]);
-    const [businesseBadges, setBusinessesBadges] = useState('');
+    const [businesseBadges, setBusinessesBadges] = useState([]);
+    const src = 'https://www.pulsecarshalton.co.uk/wp-content/uploads/2016/08/jk-placeholder-image.jpg'
 
 
 
@@ -132,7 +132,6 @@ function DashboardContent() {
                         overflow: 'auto',
                     }}
                 >
-                    <Toolbar />
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                         <Grid container spacing={3} style={{marginBottom: '8em'}}>
                             {/* Chart */}
@@ -162,23 +161,32 @@ function DashboardContent() {
                                 </Paper>
                             </Grid>
                         </Grid>
+                        <div style={{marginBottom: '2em'}}>
+                            <Divider />
+                            <h1>No Badges Yet</h1>
+                            <Image.Group size='medium'>
+                                <Image src={src} />
+                                <Image src={src} />
+                                <Image src={src} />
+                            </Image.Group>
+                        </div>
                         <Modal
                             onClose={() => setOpen(false)}
                             onOpen={() => setOpen(true)}
                             open={open}
-                            trigger={<B color={'green'}>Generate Badge</B>}
+                            trigger={<B color={'green'}>Create Badge</B>}
                         >
-                            <Modal.Header>Generate Badge Image</Modal.Header>
+                            <Modal.Header>Create Badge Image</Modal.Header>
                             <Modal.Content>
                                 <Form>
                                     <Form.Group>
                                         <Form.Field width={12}>
                                             <label>Badge Description</label>
-                                            <input placeholder='Badge Description' onChange={(e) => setDescription( e.target.value)}/>
+                                            <input placeholder='Coffee' onChange={(e) => setDescription( e.target.value)}/>
                                         </Form.Field>
 
                                         <Form.Field width={4} style={{marginTop: '1.6em'}}>
-                                            <Input labelPosition='right' type='text' placeholder='Badge Price' onChange={(e) => setPrice(e.target.value)}>
+                                            <Input labelPosition='right' type='text' placeholder='15' onChange={(e) => setPrice(e.target.value)}>
                                                 <Label basic>$</Label>
                                                 <input />
                                                 <Label>.00</Label>
@@ -189,7 +197,7 @@ function DashboardContent() {
                                     <Form.Group>
                                         <Form.Field width={12}>
                                             <label>Perk</label>
-                                            <input placeholder='Badge Perk' onChange={(e) => setPerks(e.target.value)}/>
+                                            <input placeholder='Free coffee fridays' onChange={(e) => setPerks(e.target.value)}/>
                                         </Form.Field>
 
                                         <Form.Field >
@@ -220,7 +228,7 @@ function DashboardContent() {
                                             />
                                         </Form.Field>
                                         <Form.Field width={4} style={{marginTop: '1.6em'}}>
-                                            <Input labelPosition='right' type='text' placeholder='Badge Price' onChange={(e) => setPrice(e.target.value)}>
+                                            <Input labelPosition='right' type='text' placeholder='15' onChange={(e) => setPrice(e.target.value)}>
                                                 <Label basic>$</Label>
                                                 <input />
                                                 <Label>.00</Label>
@@ -230,7 +238,7 @@ function DashboardContent() {
                                     <Form.Group>
                                         <Form.Field width={12}>
                                             <label>Perk</label>
-                                            <input placeholder='Badge Perk' onChange={(e) => setPerks(e.target.value)}/>
+                                            <input placeholder='Free coffee fridays' onChange={(e) => setPerks(e.target.value)}/>
                                         </Form.Field>
                                         <Form.Field>
                                             <Modal.Actions>
