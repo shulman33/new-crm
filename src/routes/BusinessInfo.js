@@ -9,10 +9,10 @@ export default function BusinessInfo(props) {
         if (business !== undefined) {
             return (
                 <div>
-                    <p>Business Name: {business.businessName}</p>
-                    <p>Description: {business.description}</p>
-                    <p>Address: {business.address}</p>
-                    <p>Email: {business.email}</p>
+                    <h6>Business Name: {business.businessName}</h6>
+                    <h6>Description: {business.description}</h6>
+                    <h6>Address: {business.address}</h6>
+                    <h6>Email: {business.email}</h6>
                 </div>
             )
         } else {

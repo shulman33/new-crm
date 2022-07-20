@@ -22,6 +22,7 @@ import {useEffect, useState} from "react";
 import {Button, Input, Menu} from 'semantic-ui-react'
 import React from "react";
 import Searchbar from "./routes/Searchbar";
+import BusinessProfile from "./routes/BusinessProfile";
 
 
 
@@ -54,7 +55,7 @@ function App() {
     }else if (customer && !business){
         routing = <Navigate to='/CustomerWelcome' />
     }else if(business && !customer){
-        routing = <Navigate to='/businessdashboard' />
+        routing = <Navigate to='/businessprofile' />
     }
 
     async function handleLogout(){
@@ -126,7 +127,7 @@ function App() {
               {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
               {business && (
                   <>
-                      <Route path="businessdashboard" element={<Dashboard />} />
+                      <Route path="businessprofile" element={<BusinessProfile />} />
                   </>
               )}
               <Route path="BusinessSignUp" element={<SignUpBusiness />} />
