@@ -49,10 +49,10 @@ export default function LandingPage(){
                     </div>
                 </section>
                 <Segment className='segment'>
-                    <Grid className='main' columns={2} relaxed='very'>
+                    <Grid className='main' columns={2} relaxed='very' divided='vertically'>
                         <Grid.Column floated='left' width={7}>
                             <div className="trending"><h2>Trending Badges</h2></div>
-                            <Card.Group style={{marginLeft: '10vh'}}>
+                            <Card.Group style={{marginLeft: '8em'}} itemsPerRow={2}>
                                 <Card style={{width: '250px'}}>
                                     <Image src='https://www2.skillsoft.com/wp-content/uploads/2020/01/GenericBadge-1.png' wrapped ui={false} />
                                     <Card.Content>
@@ -127,9 +127,9 @@ export default function LandingPage(){
                                 </Card>
                             </Card.Group>
                         </Grid.Column>
-                        <Grid.Column floated='right' width={7}>
+                        <Grid.Column floated='right'>
                             <div className="featured"><h2>Featured Businesses</h2></div>
-                            <Card.Group style={{marginLeft : '7vh', marginRight: '9vh'}}>
+                            <Card.Group style={{marginLeft : '6em', marginRight: '2em'}} itemsPerRow={2}>
                                 <BusinessCards businesses={businesses}/>
                             </Card.Group>
                         </Grid.Column>
