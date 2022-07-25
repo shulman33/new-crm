@@ -78,7 +78,7 @@ function DashboardContent() {
     function onClick(event) {
         event.preventDefault();
         setOpen(false);
-        generateBadge('/' + description.valueOf(), perks.valueOf() , price.valueOf(), 'coffee', '7');
+        generateBadge('/' + description.valueOf(), perks.valueOf() , price.valueOf(), business.Item.businessName.S, '7');
         console.log('/'+description.valueOf());
         console.log('perks: ' + perks.valueOf());
         console.log('price: ' + price.valueOf());

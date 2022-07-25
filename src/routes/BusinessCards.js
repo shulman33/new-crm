@@ -1,4 +1,3 @@
-import { width } from '@mui/system';
 import React, {useState} from 'react';
 import {Button, Card, Segment, Dimmer, Loader, Modal, Header} from "semantic-ui-react";
 import Map from "./Map";
