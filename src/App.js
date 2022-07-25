@@ -102,11 +102,11 @@ function App() {
                     >
                         <Link to="/AboutUs" style={{color: 'black'}}> About Us </Link>
                     </Menu.Item>
-                    {(business) && (
-                        <>
-                            <Header as='h1' textAlign='center' color='green' style={{marginLeft: '11em'}}>Welcome  {businessInfo.Item.businessName.S}</Header>
-                        </>
-                    )}
+                    {/*{(business) && (*/}
+                    {/*    <>*/}
+                    {/*        <Header as='h1' textAlign='center' color='green' style={{marginLeft: '11em'}}>Welcome  {businessInfo.Item.businessName.S}</Header>*/}
+                    {/*    </>*/}
+                    {/*)}*/}
 
                     <Menu.Menu position='right'>
                         <Menu.Item>

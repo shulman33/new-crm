@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Card, Segment, Dimmer, Loader, Modal, Header} from "semantic-ui-react";
+import {Button, Card, Dimmer, Loader, Modal, Header} from "semantic-ui-react";
 import {useState} from "react";
 import Map from "./Map";
 
