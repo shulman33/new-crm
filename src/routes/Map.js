@@ -13,16 +13,6 @@ import { Geocoder } from '@aws-amplify/ui-react';
 
 
 function Map(stringAddress) {
-    // console.log(stringAddress.replace(' ', '%20'));
-
-    // const address = fetch("https://api.myptv.com/geocoding/v1/locations/by-text?searchText=7646%20168th%20Street%2011366&countryFilter=US", {
-    //     method: "GET",
-    //     headers: { apiKey: "MWM3ZmI4Y2NmYWY4NDQ2NmIyNzVmYzUxMWM0OGRjNzA6NzM0ODhlMjctYjZkYy00OWU2LWIwODUtNzhiM2ZiODljZmI5", "Content-Type": "application/json" },
-    // })
-    //     .then(response => response.json())
-    //     .then(result => console.log(result));
-
-
     const [longitude, setLongitude] = useState(0);
     const [latitude, setLatitude] = useState(0);
 

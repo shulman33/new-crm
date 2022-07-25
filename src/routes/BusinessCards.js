@@ -13,6 +13,8 @@ function BusinessCards(props) {
             return(
                 businesses.slice(0,14).map((business) => {
                     console.log(business);
+                    const businessName = business.businessName.S 
+                    const businessAddress = business.address.S 
                     return(
                         <Card>
                             <Card.Content>
@@ -34,8 +36,8 @@ function BusinessCards(props) {
                                                 <p>
                                                     Maybe put some badges here?
                                                 </p>
-                                                <Header>Come visit us at {business.address.S}</Header>
-                                                    <Map>{business.address.S}</Map>
+                                                <Header>Come visit us at {businessAddress}</Header>
+                                                    <Map stringAddress={businessAddress} />
                                             </Modal.Description>
                                         </Modal.Content>
                                         <Modal.Actions>
