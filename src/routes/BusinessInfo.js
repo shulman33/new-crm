@@ -6,13 +6,13 @@ export default function BusinessInfo(props) {
         const business = props;
         console.log(business);
 
-        if (business !== undefined) {
+        if (business.length > 0) {
             return (
                 <div>
-                    <h6>Business Name: {business.businessName}</h6>
-                    <h6>Description: {business.description}</h6>
-                    <h6>Address: {business.address}</h6>
-                    <h6>Email: {business.email}</h6>
+                    <p>Business Name: {business.businessName.S}</p>
+                    <p>Description: {business.description.S}</p>
+                    <p>Address: {business.address.S}</p>
+                    <p>Email: {business.email.S}</p>
                 </div>
             )
         } else {
