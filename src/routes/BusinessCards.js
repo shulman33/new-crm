@@ -34,7 +34,7 @@ function BusinessCards(props) {
                                                 <p>
                                                     Maybe put some badges here?
                                                 </p>
-                                                <Header>Come visit us at</Header>
+                                                <Header>Come visit us at {business.address.S}</Header>
                                                     <Map>{business.address.S}</Map>
                                             </Modal.Description>
                                         </Modal.Content>
