@@ -8,7 +8,9 @@ import Paper from '@mui/material/Paper';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import axios from "axios";
+
 import {Modal, Button as B, Form, Input, Label, Divider, Image, Header} from "semantic-ui-react";
+
 import {useState} from "react";
 import {useEffect} from "react";
 
@@ -21,6 +23,7 @@ function DashboardContent() {
     const [price, setPrice] = useState(null);
     const [perks, setPerks] = useState('');
     const [image, setImage] = useState([]);
+
     const [business, setBusiness] = useState(null);
     const email = localStorage.getItem('userId');
     const [businesseBadges, setBusinessesBadges] = useState([]);
@@ -41,6 +44,7 @@ function DashboardContent() {
             }
         }
     }
+
 
 
 

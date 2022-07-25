@@ -45,6 +45,7 @@ export default function LandingPage(){
 
                         <Link to="/CustomerLogin" style={{color: 'white'}}> Get Started as a Customer </Link>
 
+
                     </Button>
                 </div>
             </section>
