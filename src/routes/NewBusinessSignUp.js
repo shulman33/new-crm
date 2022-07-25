@@ -30,7 +30,7 @@ export default function SignUpBusiness() {
             "TableName": "BusinessUserDB",
             "Item": {
                 "businessId": {
-                    "S": uuid()
+                    "S": email
                 },
                 "businessName": {
                     "S": business
@@ -59,10 +59,11 @@ export default function SignUpBusiness() {
             }
         });
 
-        axios.post('https://objntfufkk.execute-api.us-east-1.amazonaws.com/beta/post', generateJsonData())
+        axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/post', generateJsonData())
             .then(response => {
                 console.log(response)
             })
+
     };
 
     return (

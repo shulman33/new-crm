@@ -20,10 +20,12 @@ import SignUpCustomer from "./routes/NewCustomerSignUp";
 import SignInBusiness from "./routes/NewBusinessLogin";
 import Dashboard from "./routes/Dashboard";
 import {useEffect, useState} from "react";
-import {Button, Input, Menu} from 'semantic-ui-react'
+import {Button, Header, Input, Menu} from 'semantic-ui-react'
 import React from "react";
 import Searchbar from "./routes/Searchbar";
-import Home from "./routes/Map";
+import BusinessProfile from "./routes/BusinessProfile";
+import axios from "axios";
+
 
 
 
@@ -32,6 +34,8 @@ Amplify.configure(awsExports);
 function App() {
     const [customer, setCustomer] = useState(null);
     const [business, setBusiness] = useState(null);
+    const [businessInfo, setBusinessInfo] = useState(null);
+    const email = localStorage.getItem('userId');
 
     let routing = null;
 
@@ -48,15 +52,28 @@ function App() {
         if (loggedInBusiness) {
             const foundBusiness = JSON.parse(loggedInBusiness);
             setBusiness(foundBusiness);
+            axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/get', jsonData)
+                .then(response => {
+                    setBusinessInfo(response.data);
+                })
         }
     }, []);
+
+    const jsonData = {
+        "TableName": "BusinessUserDB",
+        "Key": {
+            "businessId": {
+                "S": email
+            }
+        }
+    }
 
     if (!customer && !business){
         routing = <Navigate to='/' />
     }else if (customer && !business){
         routing = <Navigate to='/CustomerWelcome' />
     }else if(business && !customer){
-        routing = <Navigate to='/businessdashboard' />
+        routing = <Navigate to='/businessprofile' />
     }
 
     async function handleLogout(){
@@ -85,6 +102,12 @@ function App() {
                     >
                         <Link to="/AboutUs" style={{color: 'black'}}> About Us </Link>
                     </Menu.Item>
+                    {(business) && (
+                        <>
+                            <Header as='h1' textAlign='center' color='green' style={{marginLeft: '11em'}}>Welcome  {businessInfo.Item.businessName.S}</Header>
+                        </>
+                    )}
+
                     <Menu.Menu position='right'>
                         <Menu.Item>
                             {/*<Input className='icon' icon='search' placeholder='Search...' />*/}
@@ -128,7 +151,7 @@ function App() {
               {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
               {business && (
                   <>
-                      <Route path="businessdashboard" element={<Dashboard />} />
+                      <Route path="businessprofile" element={<Dashboard />} />
                   </>
               )}
               <Route path="BusinessSignUp" element={<SignUpBusiness />} />

@@ -17,6 +17,7 @@ import BussinessUserPool from "../utils/BussinessUserPool";
 import Alert from '@mui/material/Alert';
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
+import axios from "axios";
 
 const theme = createTheme();
 
@@ -41,10 +42,14 @@ export default function SignInBusiness({businessAuth}) {
 
         business.authenticateUser(authDetails, {
             onSuccess: data => {
+                const username = business.getUsername()
                 console.log("YOU LOGGED IN AND NO ONE CARES:", data);
                 businessAuth(business)
                 localStorage.setItem('business', JSON.stringify(business))
-                navigate("/businessdashboard")
+                console.log(`this is the email ${email}`)
+                console.log(`this is the username ${username}`)
+                localStorage.setItem('userId', email);
+                navigate("/businessprofile")
             },
 
             onFailure: err => {

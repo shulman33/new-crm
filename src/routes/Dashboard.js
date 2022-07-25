@@ -8,8 +8,11 @@ import Paper from '@mui/material/Paper';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import axios from "axios";
-import {Modal, Button as B, Form, Input, Label, Divider, Image} from "semantic-ui-react";
+
+import {Modal, Button as B, Form, Input, Label, Divider, Image, Header} from "semantic-ui-react";
+
 import {useState} from "react";
+import {useEffect} from "react";
 
 const mdTheme = createTheme();
 
@@ -20,8 +23,28 @@ function DashboardContent() {
     const [price, setPrice] = useState(null);
     const [perks, setPerks] = useState('');
     const [image, setImage] = useState([]);
+
+    const [business, setBusiness] = useState(null);
+    const email = localStorage.getItem('userId');
     const [businesseBadges, setBusinessesBadges] = useState([]);
     const src = 'https://www.pulsecarshalton.co.uk/wp-content/uploads/2016/08/jk-placeholder-image.jpg'
+
+    useEffect(() => {
+        axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/get', jsonData)
+            .then(response => {
+                setBusiness(response.data);
+            })
+    }, []);
+
+    const jsonData = {
+        "TableName": "BusinessUserDB",
+        "Key": {
+            "businessId": {
+                "S": email
+            }
+        }
+    }
+
 
 
 
