@@ -102,11 +102,11 @@ function App() {
                     >
                         <Link to="/AboutUs" style={{color: 'black'}}> About Us </Link>
                     </Menu.Item>
-                    {(business) && (
+                    {/*{(business) && (
                         <>
                             <Header as='h1' textAlign='center' color='green' style={{marginLeft: '11em'}}>Welcome  {businessInfo.Item.businessName.S}</Header>
                         </>
-                    )}
+                    )}*/}
 
                     <Menu.Menu position='right'>
                         <Menu.Item>
@@ -134,6 +134,9 @@ function App() {
                         {(customer || business) && (
                             <>
                                 <Menu.Item>
+                                    <Link to="/profile" style={{color: 'black'}}> Profile </Link>
+                                </Menu.Item>
+                                <Menu.Item>
                                     <Button color='green' onClick={handleLogout}>
 
                                         Logout
@@ -147,7 +150,7 @@ function App() {
                 </Menu>
             </nav>
           <Routes>
-              {(!customer && !business) && <Route path="/" element={<LandingPage />} />}
+              <Route path="/" element={<LandingPage />} />
               {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
               {business && (
                   <>

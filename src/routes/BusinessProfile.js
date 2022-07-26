@@ -12,6 +12,7 @@ function BusinessProfile() {
     useEffect(() => {
         axios.post('https://e4zbw0wbnk.execute-api.us-east-1.amazonaws.com/test/get', jsonData)
             .then(response => {
+                console.log(response);
                 setBusiness(response.data);
             })
     }, []);
