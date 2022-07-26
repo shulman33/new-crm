@@ -25,6 +25,7 @@ import React from "react";
 import Searchbar from "./routes/Searchbar";
 import BusinessProfile from "./routes/BusinessProfile";
 import axios from "axios";
+import CustomerProfile from "./routes/CustomerProfile";
 
 
 
@@ -71,9 +72,9 @@ function App() {
     if (!customer && !business){
         routing = <Navigate to='/' />
     }else if (customer && !business){
-        routing = <Navigate to='/CustomerWelcome' />
+        routing = <Navigate to='/customer-profile' />
     }else if(business && !customer){
-        routing = <Navigate to='/businessprofile' />
+        routing = <Navigate to='/business-profile' />
     }
 
     async function handleLogout(){
@@ -154,14 +155,14 @@ function App() {
               {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
               {business && (
                   <>
-                      <Route path="businessprofile" element={<Dashboard />} />
+                      <Route path="business-profile" element={<Dashboard />} />
                   </>
               )}
               <Route path="BusinessSignUp" element={<SignUpBusiness />} />
               {!customer && <Route path="CustomerLogin" element={<SignInCustomer customerAuth={() => setCustomer(true)}/>} />}
               {customer && (
                   <>
-                      <Route path="CustomerWelcome" element={<CustomerWelcomeP customerLogout={() => setCustomer(false)}/>} />
+                      <Route path="customer-profile" element={<CustomerProfile customerLogout={() => setCustomer(false)}/>} />
                   </>
               )}
 

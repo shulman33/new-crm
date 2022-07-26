@@ -29,7 +29,7 @@ export default function SignUpCustomer() {
             "TableName": "CustomerUserDB",
             "Item": {
                 "customerId": {
-                    "S": uuid()
+                    "S": email
                 },
                 "firstName": {
                     "S": firstName
