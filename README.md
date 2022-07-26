@@ -12,4 +12,31 @@ This app is written in React and uses Amplify, Amazon Cognito, Amazon DynamoDB, 
 
 ## Architecture Diagram
 
-![Architecture](public/Architecture-Diagram.png)
+![Architecture](public/Architecture-Diagram-final-draft.png.jpg)
+
+## Netlify 
+
+We took advantage of the Netlify deployment platform to deploy this application.
+
+## React
+
+We used React to build all the front-end components and to implement routing for the app.
+
+## API Gateway
+Yaakov write here 
+## S3 Buckets
+Yaakov write here
+
+## DynamoDB
+Yaakov write here
+
+## Cognito
+We used two separate Cognito user pools. One for the business owner and one for the customer. The business owner user pool is used to manage access so only the business owner can view customer information. The customer user pool is used to manage the customer account.
+
+## Amplify
+David write here 
+
+## Instillation
+Yosef write here
+
+
