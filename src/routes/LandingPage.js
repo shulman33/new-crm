@@ -1,7 +1,6 @@
 import React from 'react'
 import {Button, Card, Grid, Image, Divider, Segment} from "semantic-ui-react";
 import './LandingPage.css'
-// import {Auth} from "aws-amplify";
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import axios from "axios";

@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {Button, Card, Grid, Image, Segment} from "semantic-ui-react";
+import React from 'react'
+import {Card, Grid, Image, Segment} from "semantic-ui-react";
 import './CustomerWelcomeP.css'
 import {Auth} from "aws-amplify";
 import {useNavigate} from "react-router-dom";

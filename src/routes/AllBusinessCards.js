@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Card, Segment, Dimmer, Loader, Modal, Header} from "semantic-ui-react";
+import {Button, Card, Dimmer, Loader, Modal, Header} from "semantic-ui-react";
 import {useState} from "react";
 import Map from "./Map";
 
@@ -14,10 +14,12 @@ function AllBusinessCards(props) {
             return(
                 businesses.map((business) => {
                     console.log(business);
+                    const businessName = business.businessName.S 
+                    const businessAddress = business.address.S 
                     return(
                         <Card>
                             <Card.Content>
-                                <Card.Header>{business.businessName.S}</Card.Header>
+                                <Card.Header>{businessName}</Card.Header>
                                 <Card.Description>{business.description.S}</Card.Description>
                             </Card.Content>
                             <Card.Content extra>
@@ -28,15 +30,15 @@ function AllBusinessCards(props) {
                                         open={open}
                                         trigger={<Button color={'green'} inverted>Visit Us</Button>}
                                     >
-                                        <Modal.Header>Welcome to {business.businessName.S}</Modal.Header>
+                                        <Modal.Header>Welcome to {businessName}</Modal.Header>
                                         <Modal.Content>
                                             <Modal.Description>
                                                 <Header>Badges?</Header>
                                                 <p>
                                                     Maybe put some badges here?
                                                 </p>
-                                                <Header>Come visit us at</Header>
-                                                    <Map></Map>
+                                                <Header>Come visit us at {businessAddress}</Header>
+                                                    <Map stringAddress={businessAddress} />
                                             </Modal.Description>
                                         </Modal.Content>
                                         <Modal.Actions>

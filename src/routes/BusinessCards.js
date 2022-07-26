@@ -1,4 +1,3 @@
-import { width } from '@mui/system';
 import React, {useState} from 'react';
 import {Button, Card, Segment, Dimmer, Loader, Modal, Header} from "semantic-ui-react";
 import Map from "./Map";
@@ -13,6 +12,8 @@ function BusinessCards(props) {
             return(
                 businesses.slice(0,14).map((business) => {
                     console.log(business);
+                    const businessName = business.businessName.S 
+                    const businessAddress = business.address.S 
                     return(
                         <Card>
                             <Card.Content>
@@ -34,8 +35,8 @@ function BusinessCards(props) {
                                                 <p>
                                                     Maybe put some badges here?
                                                 </p>
-                                                <Header>Come visit us at</Header>
-                                                    <Map></Map>
+                                                <Header>Come visit us at {business.address.S}</Header>
+                                                <Map stringAddress={business.address.S} />
                                             </Modal.Description>
                                         </Modal.Content>
                                         <Modal.Actions>
