@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 import {Button, Card, Segment, Dimmer, Loader, Modal, Header} from "semantic-ui-react";
 import Maps from "./Map";
+import {Link} from "react-router-dom";
 
 function BusinessCards(props) {
     const [open, setOpen] = useState(false)
     const displayCards = (props) => {
         const {businesses} = props;
-
-
         if (businesses.length > 0) {
             return(
                 businesses.slice(0,14).map((business) => {
@@ -23,9 +22,6 @@ function BusinessCards(props) {
                             <Card.Content extra>
                                 <div className='ui-button'>
                                     <Modal
-                                        onClose={() => setOpen(false)}
-                                        onOpen={() => setOpen(true)}
-                                        open={open}
                                         trigger={<Button color={'green'} inverted>Visit Us</Button>}
                                     >
                                         <Modal.Header>Welcome to {business.businessName.S}</Modal.Header>
@@ -36,13 +32,7 @@ function BusinessCards(props) {
                                             </Modal.Description>
                                         </Modal.Content>
                                         <Modal.Actions>
-                                            <Button
-                                                icon='close'
-                                                onClick={() => setOpen(false)}
-                                                negative
-                                            />
                                         </Modal.Actions>
-
                                     </Modal>
                                 </div>
                             </Card.Content>

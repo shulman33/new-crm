@@ -14,39 +14,29 @@ function AllBusinessCards(props) {
             return(
                 businesses.map((business) => {
                     console.log(business);
-                    const businessName = business.businessName.S 
-                    const businessAddress = business.address.S 
                     return(
                         <Card>
                             <Card.Content>
-                                <Card.Header>{businessName}</Card.Header>
+                                <Card.Header>{business.businessName.S}</Card.Header>
                                 <Card.Description>{business.description.S}</Card.Description>
                             </Card.Content>
                             <Card.Content extra>
                                 <div className='ui-button'>
                                     <Modal
-                                        onClose={() => setOpen(false)}
-                                        onOpen={() => setOpen(true)}
-                                        open={open}
                                         trigger={<Button color={'green'} inverted>Visit Us</Button>}
                                     >
-                                        <Modal.Header>Welcome to {businessName}</Modal.Header>
+                                        <Modal.Header>Welcome to {business.businessName.S}</Modal.Header>
                                         <Modal.Content>
                                             <Modal.Description>
                                                 <Header>Badges?</Header>
                                                 <p>
                                                     Maybe put some badges here?
                                                 </p>
-                                                <Header>Come visit us at {businessAddress}</Header>
-                                                    <Maps stringAddress = {businessAddress}></Maps>
+                                                <Header>Come visit us at {business.address.S}</Header>
+                                                    <Maps stringAddress = {business.address.S}></Maps>
                                             </Modal.Description>
                                         </Modal.Content>
                                         <Modal.Actions>
-                                            <Button
-                                                icon='close'
-                                                onClick={() => setOpen(false)}
-                                                negative
-                                            />
                                         </Modal.Actions>
 
                                     </Modal>
