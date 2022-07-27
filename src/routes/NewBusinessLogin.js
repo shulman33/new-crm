@@ -48,7 +48,7 @@ export default function SignInBusiness({businessAuth}) {
                 console.log(`this is the email ${email}`)
                 console.log(`this is the username ${username}`)
                 localStorage.setItem('userId', email);
-                navigate("/businessprofile")
+                navigate("/business-profile")
             },
 
             onFailure: err => {

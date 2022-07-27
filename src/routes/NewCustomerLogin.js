@@ -45,7 +45,8 @@ export default function SignInCustomer({customerAuth}) {
                 console.log("YOU LOGGED IN:", data);
                 customerAuth(customer)
                 localStorage.setItem('customer', JSON.stringify(customer))
-                navigate("/CustomerWelcomeP")
+                localStorage.setItem('userId', email);
+                navigate("/customer-profile")
             },
 
             onFailure: err => {
