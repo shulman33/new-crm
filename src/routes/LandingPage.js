@@ -52,7 +52,7 @@ export default function LandingPage(){
                 <Grid className='main' columns={2} relaxed='very' divided='vertically'>
                     <Grid.Column floated='left' width={7}>
                         <div className="trending"><h2>Trending Badges</h2></div>
-                        <Card.Group style={{marginLeft: '8em'}} itemsPerRow={2}>
+                        <Card.Group style={{marginLeft: '4em'}} itemsPerRow={2}>
                             <Card style={{width: '250px'}}>
                                 <Image src='https://www2.skillsoft.com/wp-content/uploads/2020/01/GenericBadge-1.png' wrapped ui={false} />
                                 <Card.Content>

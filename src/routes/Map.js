@@ -6,7 +6,9 @@ import './Map.css';
 
 
 
-function Map(stringAddress) {
+function Maps({stringAddress}) {
+    console.log("address : " + stringAddress);
+    console.log(stringAddress.toString().replace(' ', '%20'));
     const [longitude, setLongitude] = useState(0);
     const [latitude, setLatitude] = useState(0);
 
@@ -47,4 +49,4 @@ function Map(stringAddress) {
     }
 }
 
-export default React.memo(Map);
+export default React.memo(Maps);
