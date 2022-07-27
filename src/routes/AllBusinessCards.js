@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Card, Dimmer, Loader, Modal, Header} from "semantic-ui-react";
 import {useState} from "react";
-import Map from "./Map";
+import Maps from "./Map";
 
 
 function AllBusinessCards(props) {
@@ -38,7 +38,7 @@ function AllBusinessCards(props) {
                                                     Maybe put some badges here?
                                                 </p>
                                                 <Header>Come visit us at {businessAddress}</Header>
-                                                    <Map stringAddress={businessAddress} />
+                                                    <Maps stringAddress = {businessAddress}></Maps>
                                             </Modal.Description>
                                         </Modal.Content>
                                         <Modal.Actions>

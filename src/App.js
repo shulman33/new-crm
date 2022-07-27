@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import Footer from "./routes/Footer";
 import AboutUs from "./routes/AboutUs";
-import Map from "./routes/Map";
+import Maps from "./routes/Map";
 import Faq from "./routes/Faq";
 import CustomerWelcomeP from "./routes/CustomerWelcomeP";
 import Businesses from "./routes/Businesses";
@@ -169,7 +169,7 @@ function App() {
               <Route path="aboutus" element={<AboutUs />} />
               <Route path="Faq" element={<Faq />} />
               <Route path="businesses" element={<Businesses />} />
-              <Route path="map" element={<Map />} />
+              <Route path="maps" element={<Maps />} />
               <Route path="*" element={ routing } />
           </Routes>
             <Footer />

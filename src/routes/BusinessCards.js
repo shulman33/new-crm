@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Card, Segment, Dimmer, Loader, Modal, Header} from "semantic-ui-react";
-import Map from "./Map";
+import Maps from "./Map";
 
 function BusinessCards(props) {
     const [open, setOpen] = useState(false)
@@ -31,12 +31,8 @@ function BusinessCards(props) {
                                         <Modal.Header>Welcome to {business.businessName.S}</Modal.Header>
                                         <Modal.Content>
                                             <Modal.Description>
-                                                <Header>Badges?</Header>
-                                                <p>
-                                                    Maybe put some badges here?
-                                                </p>
-                                                <Header>Come visit us at {business.address.S}</Header>
-                                                <Map stringAddress={business.address.S} />
+                                                <Header>Come visit us at {businessAddress}</Header>
+                                                    <Maps stringAddress = {businessAddress}></Maps>
                                             </Modal.Description>
                                         </Modal.Content>
                                         <Modal.Actions>
