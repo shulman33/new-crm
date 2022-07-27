@@ -24,6 +24,7 @@ We used React to build all the front-end components and to implement routing for
 
 ## API Gateway
 Yaakov write here 
+
 ## S3 Buckets
 Yaakov write here
 
@@ -34,7 +35,7 @@ Yaakov write here
 We used two separate Cognito user pools. One for the business owner and one for the customer. The business owner user pool is used to manage access so only the business owner can view customer information. The customer user pool is used to manage the customer account.
 
 ## Amplify
-David write here 
+We used Amplify and Amplify Studio to create and continuously run a backend for our application. Amplify stores the backend environment in an instance of an S3 bucket (described above). Amplify is also configured to allow for the google maps rendering within each business card. 
 
 ## Instillation
 Yosef write here
