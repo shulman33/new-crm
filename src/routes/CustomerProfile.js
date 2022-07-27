@@ -1,7 +1,7 @@
 import React from 'react';
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Button, Divider, Image} from "semantic-ui-react";
+import {Button, Container, Divider, Image} from "semantic-ui-react";
 import {Link} from "react-router-dom";
 // import "./CustomerProfile.css"
 
@@ -65,12 +65,14 @@ function CustomerProfile() {
             <section>
                 <div style={{marginBottom: '2em', marginTop: '2em'}}>
                     <h1>Your Wallet</h1>
-                    <h3>No Badges Yet</h3>
-                    <Image.Group size='medium'>
-                        <Image src={src} />
-                        <Image src={src} />
-                        <Image src={src} />
-                    </Image.Group>
+                    <Container style={{borderStyle: "dashed", borderColor: "#7aecae", borderRadius: "3px", margin: "auto"}}>
+                        <h3 style={{marginTop: "0.5em"}}>No Badges Yet</h3>
+                        <Image.Group size='medium'>
+                            <Image src={src} />
+                            <Image src={src} />
+                            <Image src={src} />
+                        </Image.Group>
+                    </Container>
                 </div>
             </section>
         </div>
