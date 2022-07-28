@@ -1,10 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import {Card, Image, Button} from "semantic-ui-react";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import BusinessCards from "../BusinessCards";
 import {faker} from "@faker-js/faker";
 
 export default function Landing() {
