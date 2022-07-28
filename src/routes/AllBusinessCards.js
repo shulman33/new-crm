@@ -28,10 +28,6 @@ function AllBusinessCards(props) {
                                         <Modal.Header>Welcome to {business.businessName.S}</Modal.Header>
                                         <Modal.Content>
                                             <Modal.Description>
-                                                <Header>Badges?</Header>
-                                                <p>
-                                                    Maybe put some badges here?
-                                                </p>
                                                 <Header>Come visit us at {business.address.S}</Header>
                                                     <Maps stringAddress = {business.address.S}></Maps>
                                             </Modal.Description>
