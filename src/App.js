@@ -1,31 +1,25 @@
-import './App.css';
 import '@aws-amplify/ui-react/styles.css';
 import {Amplify, Auth} from 'aws-amplify';
 import awsExports from './aws-exports';
-import LandingPage from "./routes/LandingPage";
 import {
     Routes,
     Route,
     Navigate, Link
 } from "react-router-dom";
-import Footer from "./routes/Footer";
-import AboutUs from "./routes/AboutUs";
-import Maps from "./routes/Map";
-import Faq from "./routes/Faq";
-import CustomerWelcomeP from "./routes/CustomerWelcomeP";
-import Businesses from "./routes/Businesses";
-import SignInCustomer from "./routes/NewCustomerLogin";
-import SignUpBusiness from "./routes/NewBusinessSignUp";
-import SignUpCustomer from "./routes/NewCustomerSignUp";
-import SignInBusiness from "./routes/NewBusinessLogin";
-import Dashboard from "./routes/Dashboard";
+import Footer from "./routes/components/Footers/Footer.js"
+import AboutUs from "./routes/views/AboutUs";
+import Maps from "./routes/views/Map";
+import Businesses from "./routes/views/Businesses";
+import SignInCustomer from "./routes/views/CustomerLogin";
+import SignUpBusiness from "./routes/views/BusinessSignUp";
+import SignUpCustomer from "./routes/views/CustomerSignUp";
+import SignInBusiness from "./routes/views/BusinessLogin";
 import {useEffect, useState} from "react";
-import {Button, Header, Input, Menu} from 'semantic-ui-react'
 import React from "react";
-import Searchbar from "./routes/Searchbar";
-import BusinessProfile from "./routes/BusinessProfile";
 import axios from "axios";
-import CustomerProfile from "./routes/CustomerProfile";
+import Landing from "./routes/views/Landing";
+import BusinessProfile from "./routes/views/BusinessProfile";
+import CustomerProfile from "./routes/views/CustomomerProfile";
 
 
 
@@ -36,6 +30,7 @@ function App() {
     const [customer, setCustomer] = useState(null);
     const [business, setBusiness] = useState(null);
     const [businessInfo, setBusinessInfo] = useState(null);
+    const [navbarOpen, setNavbarOpen] = React.useState(false);
     const email = localStorage.getItem('userId');
 
     let routing = null;
@@ -88,87 +83,120 @@ function App() {
   return (
 
         <div className="App">
-            <nav>
-                <Menu>
-                    <Menu.Item header>
-                        <Link to="/" style={{color: 'black'}}> Elite Managing </Link>
-                    </Menu.Item>
-                    <Menu.Item
-                        name='Businesses'
+            <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
+                <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+                    <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+                        <Link
+                            className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+                            to="/"
+                        >
+                            Elite Managing
+                        </Link>
+                        <Link
+                            className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+                            to="/Businesses"
+                        >
+                            Participating Businesses
+                        </Link>
+                        <Link
+                            className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+                            to="/AboutUs"
+                        >
+                            About Us
+                        </Link>
+                    </div>
+                    <div
+                        className={
+                            "lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none" +
+                            (navbarOpen ? " block rounded shadow-lg" : " hidden")
+                        }
+                        id="example-navbar-warning"
                     >
-                        <Link to="/Businesses" style={{color: 'black'}}> Businesses </Link>
-                    </Menu.Item>
-                    <Menu.Item
-                        name='About Us'
-                    >
-                        <Link to="/AboutUs" style={{color: 'black'}}> About Us </Link>
-                    </Menu.Item>
-                    {/*{(business) && (
-                        <>
-                            <Header as='h1' textAlign='center' color='green' style={{marginLeft: '11em'}}>Welcome  {businessInfo.Item.businessName.S}</Header>
-                        </>
-                    )}*/}
-
-                    <Menu.Menu position='right'>
-                        <Menu.Item>
-                            {/*<Input className='icon' icon='search' placeholder='Search...' />*/}
-                            <Searchbar/>
-                        </Menu.Item>
                         {!customer && !business && (
                             <>
-                                <Menu.Item>
-                                    <Button color='green' >
+                                <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+                                    <li className="flex items-center">
+                                        <button
+                                            className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                                            type="button"
+                                        >
+                                            <Link to="/BusinessLogin">Login as Business</Link>
+                                        </button>
+                                    </li>
 
-                                        <Link to="/BusinessLogin" style={{color: 'white'}}> Login as Business </Link>
-
-                                    </Button>
-                                </Menu.Item>
-                                <Menu.Item>
-                                    <Button color='green' >
-
-                                        <Link to="/CustomerLogin" style={{color: 'white'}}> Login as Customer </Link>
-
-                                    </Button>
-                                </Menu.Item>
+                                    <li className="flex items-center">
+                                        <button
+                                            className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                                            type="button"
+                                        >
+                                            <Link to="/CustomerLogin">Login as Customer</Link>
+                                        </button>
+                                    </li>
+                                </ul>
                             </>
+
                         )}
                         {(customer || business) && (
                             <>
-                                <Menu.Item>
-                                    <Link to="/profile" style={{color: 'black'}}> Profile </Link>
-                                </Menu.Item>
-                                <Menu.Item>
-                                    <Button color='green' onClick={handleLogout}>
-
-                                        Logout
-
-                                    </Button>
-                                </Menu.Item>
+                                <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+                                    {customer && (
+                                        <>
+                                            <li className="flex items-center">
+                                                <Link
+                                                    className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+                                                    to="/CustomerProfile"
+                                                >
+                                                    Profile
+                                                </Link>
+                                            </li>
+                                        </>
+                                    )}
+                                    {business && (
+                                        <>
+                                            <li className="flex items-center">
+                                                <Link
+                                                    className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+                                                    to="/BusinessProfile"
+                                                >
+                                                    Profile
+                                                </Link>
+                                            </li>
+                                        </>
+                                    )}
+                                    <li className="flex items-center">
+                                        <button
+                                            className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                                            onClick={handleLogout}
+                                            type="button"
+                                        >
+                                            Logout
+                                        </button>
+                                    </li>
+                                </ul>
                             </>
                         )}
 
-                    </Menu.Menu>
-                </Menu>
+                    </div>
+                </div>
             </nav>
           <Routes>
-              <Route path="/" element={<LandingPage />} />
+              <Route path="/" element={<Landing />} />
               {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
               {business && (
                   <>
-                      <Route path="business-profile" element={<Dashboard />} />
+                      <Route path="BusinessProfile" element={<BusinessProfile />} />
                   </>
               )}
               <Route path="BusinessSignUp" element={<SignUpBusiness />} />
               {!customer && <Route path="CustomerLogin" element={<SignInCustomer customerAuth={() => setCustomer(true)}/>} />}
               {customer && (
                   <>
-                      <Route path="customer-profile" element={<CustomerProfile customerLogout={() => setCustomer(false)}/>} />
+                      <Route path="CustomerProfile" element={<CustomerProfile/>} />
                   </>
               )}
 
               <Route path="CustomerSignup" element={<SignUpCustomer />} />
               <Route path="aboutus" element={<AboutUs />} />
-              <Route path="Faq" element={<Faq />} />
               <Route path="businesses" element={<Businesses />} />
               <Route path="maps" element={<Maps />} />
               <Route path="*" element={ routing } />
