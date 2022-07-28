@@ -1,13 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import {Card, Image} from "semantic-ui-react";
+import {Card, Image, Button} from "semantic-ui-react";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import BusinessCards from "../BusinessCards";
+import {faker} from "@faker-js/faker";
 
 export default function Landing() {
   const [businesses, setBusinesses] = useState('');
+  const apiEndpoint1 = 'https://loremflickr.com/320/240/business';
+  const apiEndpoint2 = 'https://loremflickr.com/320/240/badge';
+  const apiEndpoint3 = 'https://loremflickr.com/320/240/people';
+
 
   useEffect(() => {
     getAllBusinesses();
@@ -81,17 +86,20 @@ export default function Landing() {
               <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
-                    <h6 className="text-xl font-semibold">Badge of the Month</h6>
+                    <h6 className="text-xl font-semibold">Featured Badge</h6>
                     <Card style={{width: '250px', marginLeft: '4em'}}>
-                      <Image src='https://www2.skillsoft.com/wp-content/uploads/2020/01/GenericBadge-1.png' wrapped ui={false} />
+                      <Image src={apiEndpoint1} wrapped ui={false} />
                       <Card.Content>
-                        <Card.Header>Skillsoft</Card.Header>
+                        <Card.Header>{faker.company.companyName()}</Card.Header>
                         <Card.Meta>
                           <span className='date'>Badge</span>
                         </Card.Meta>
                         <Card.Description>
-                          This is a badge that gives you something.
+                          this badge gets you 75% off {faker.commerce.product()} on the first {faker.date.weekday()} of each month.
                         </Card.Description>
+                        <Button color={'green'} style={{marginTop: '1em'}} inverted>
+                          Buy
+                        </Button>
                       </Card.Content>
                     </Card>
                   </div>
@@ -99,13 +107,47 @@ export default function Landing() {
               </div>
 
               <div className="w-full md:w-4/12 px-4 text-center">
+                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                  <div className="px-4 py-5 flex-auto">
+                    <h6 className="text-xl font-semibold">Featured Badge</h6>
+                    <Card style={{width: '250px', marginLeft: '4em'}}>
+                      <Image src={apiEndpoint2} wrapped ui={false} />
+                      <Card.Content>
+                        <Card.Header>{faker.company.companyName()}</Card.Header>
+                        <Card.Meta>
+                          <span className='date'>Badge</span>
+                        </Card.Meta>
+                        <Card.Description>
+                          this badge gets you a free {faker.commerce.product()} on {faker.date.weekday()}s
+                        </Card.Description>
+                        <Button color={'green'} style={{marginTop: '1em'}} inverted>
+                          Buy
+                        </Button>
+                      </Card.Content>
+                    </Card>
+                  </div>
+                </div>
               </div>
 
               <div className="pt-6 w-full md:w-4/12 px-4 text-center">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
-                    <h6 className="text-xl font-semibold">Business of the Month</h6>
-                    <BusinessCards businesses={businesses}/>
+                    <h6 className="text-xl font-semibold">Featured Badge</h6>
+                    <Card style={{width: '250px', marginLeft: '4em'}}>
+                      <Image src={apiEndpoint3} wrapped ui={false} />
+                      <Card.Content>
+                        <Card.Header>{faker.company.companyName()}</Card.Header>
+                        <Card.Meta>
+                          <span className='date'>Badge</span>
+                        </Card.Meta>
+                        <Card.Description>
+                          this badge gets you half off {faker.commerce.product()} on {faker.date.weekday()}s
+                        </Card.Description>
+                        <Button color={'green'} style={{marginTop: '1em'}} inverted>
+                          Buy
+                        </Button>
+                      </Card.Content>
+                    </Card>
                   </div>
                 </div>
               </div>
@@ -120,7 +162,7 @@ export default function Landing() {
                   Calling all consumers
                 </h3>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  Do you want to be involved with your community? Join Elite Managing to get exclusive perks to your favorite local businesses.
+                  Do you want to be involved with your community? Join Elite Managing to get exclusive perks and badges to your favorite small businesses.
                 </p>
 
               </div>
