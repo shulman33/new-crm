@@ -155,7 +155,7 @@ function App() {
               {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
               {business && (
                   <>
-                      <Route path="business-profile" element={<Dashboard />} />
+                      <Route path="business-profile" element={<BusinessProfile />} />
                   </>
               )}
               <Route path="BusinessSignUp" element={<SignUpBusiness />} />

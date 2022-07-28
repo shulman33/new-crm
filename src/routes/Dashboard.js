@@ -141,6 +141,23 @@ function DashboardContent() {
 
     return (
         <ThemeProvider theme={mdTheme}>
+            <section style={
+                {
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    backgroundImage: "linear-gradient(to right, #43e97b 0%, #38f9d7 100%)",
+                    fontWeight: "bold",
+                    height: "20vh"
+                }
+            }>
+                <h1 style={{fontFamily: "Beba Neue", fontSize: "7vh"}}>
+                    Welcome {business.Item.businessName.S}
+                </h1>
+            </section>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
                 <Box
