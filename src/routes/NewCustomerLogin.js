@@ -46,7 +46,7 @@ export default function SignInCustomer({customerAuth}) {
                 customerAuth(customer)
                 localStorage.setItem('customer', JSON.stringify(customer))
                 localStorage.setItem('userId', email);
-                navigate("/customer-profile")
+                navigate("/Cprof")
             },
 
             onFailure: err => {
@@ -62,7 +62,7 @@ export default function SignInCustomer({customerAuth}) {
 
     return (
         <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs" style={{marginBottom : '20vh'}}>
+            <Container component="main" maxWidth="xs" style={{marginBottom : '25.5em'}}>
                 <CssBaseline />
                 <Box
                     sx={{

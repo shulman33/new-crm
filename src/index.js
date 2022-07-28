@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css';
 import {BrowserRouter} from "react-router-dom";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+// import "assets/styles/tailwind.css";
+import './routes/assets/styles/tailwind.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,5 +1,5 @@
-import './App.css';
 import '@aws-amplify/ui-react/styles.css';
+import './App.css';
 import {Amplify, Auth} from 'aws-amplify';
 import awsExports from './aws-exports';
 import LandingPage from "./routes/LandingPage";
@@ -8,7 +8,7 @@ import {
     Route,
     Navigate, Link
 } from "react-router-dom";
-import Footer from "./routes/Footer";
+import Footer from "./routes/components/Footers/Footer.js"
 import AboutUs from "./routes/AboutUs";
 import Maps from "./routes/Map";
 import Faq from "./routes/Faq";
@@ -26,6 +26,10 @@ import Searchbar from "./routes/Searchbar";
 import BusinessProfile from "./routes/BusinessProfile";
 import axios from "axios";
 import CustomerProfile from "./routes/CustomerProfile";
+import Landing from "./routes/views/Landing";
+import Navbar from "./routes/components/Navbars/AuthNavbar";
+import Bprof from "./routes/views/Profile";
+import Cprof from "./routes/views/NewCustomomerProfile";
 
 
 
@@ -88,81 +92,82 @@ function App() {
   return (
 
         <div className="App">
-            <nav>
-                <Menu>
-                    <Menu.Item header>
-                        <Link to="/" style={{color: 'black'}}> Elite Managing </Link>
-                    </Menu.Item>
-                    <Menu.Item
-                        name='Businesses'
-                    >
-                        <Link to="/Businesses" style={{color: 'black'}}> Businesses </Link>
-                    </Menu.Item>
-                    <Menu.Item
-                        name='About Us'
-                    >
-                        <Link to="/AboutUs" style={{color: 'black'}}> About Us </Link>
-                    </Menu.Item>
-                    {/*{(business) && (
-                        <>
-                            <Header as='h1' textAlign='center' color='green' style={{marginLeft: '11em'}}>Welcome  {businessInfo.Item.businessName.S}</Header>
-                        </>
-                    )}*/}
+            {/*<nav>*/}
+            {/*    <Menu>*/}
+            {/*        <Menu.Item header>*/}
+            {/*            <Link to="/" style={{color: 'black'}}> Elite Managing </Link>*/}
+            {/*        </Menu.Item>*/}
+            {/*        <Menu.Item*/}
+            {/*            name='Businesses'*/}
+            {/*        >*/}
+            {/*            <Link to="/Businesses" style={{color: 'black'}}> Businesses </Link>*/}
+            {/*        </Menu.Item>*/}
+            {/*        <Menu.Item*/}
+            {/*            name='About Us'*/}
+            {/*        >*/}
+            {/*            <Link to="/AboutUs" style={{color: 'black'}}> About Us </Link>*/}
+            {/*        </Menu.Item>*/}
+            {/*        /!*{(business) && (*/}
+            {/*            <>*/}
+            {/*                <Header as='h1' textAlign='center' color='green' style={{marginLeft: '11em'}}>Welcome  {businessInfo.Item.businessName.S}</Header>*/}
+            {/*            </>*/}
+            {/*        )}*!/*/}
 
-                    <Menu.Menu position='right'>
-                        <Menu.Item>
-                            {/*<Input className='icon' icon='search' placeholder='Search...' />*/}
-                            <Searchbar/>
-                        </Menu.Item>
-                        {!customer && !business && (
-                            <>
-                                <Menu.Item>
-                                    <Button color='green' >
+            {/*        <Menu.Menu position='right'>*/}
+            {/*            <Menu.Item>*/}
+            {/*                /!*<Input className='icon' icon='search' placeholder='Search...' />*!/*/}
+            {/*                <Searchbar/>*/}
+            {/*            </Menu.Item>*/}
+            {/*            {!customer && !business && (*/}
+            {/*                <>*/}
+            {/*                    <Menu.Item>*/}
+            {/*                        <Button color='green' >*/}
 
-                                        <Link to="/BusinessLogin" style={{color: 'white'}}> Login as Business </Link>
+            {/*                            <Link to="/BusinessLogin" style={{color: 'white'}}> Login as Business </Link>*/}
 
-                                    </Button>
-                                </Menu.Item>
-                                <Menu.Item>
-                                    <Button color='green' >
+            {/*                        </Button>*/}
+            {/*                    </Menu.Item>*/}
+            {/*                    <Menu.Item>*/}
+            {/*                        <Button color='green' >*/}
 
-                                        <Link to="/CustomerLogin" style={{color: 'white'}}> Login as Customer </Link>
+            {/*                            <Link to="/CustomerLogin" style={{color: 'white'}}> Login as Customer </Link>*/}
 
-                                    </Button>
-                                </Menu.Item>
-                            </>
-                        )}
-                        {(customer || business) && (
-                            <>
-                                <Menu.Item>
-                                    <Link to="/profile" style={{color: 'black'}}> Profile </Link>
-                                </Menu.Item>
-                                <Menu.Item>
-                                    <Button color='green' onClick={handleLogout}>
+            {/*                        </Button>*/}
+            {/*                    </Menu.Item>*/}
+            {/*                </>*/}
+            {/*            )}*/}
+            {/*            {(customer || business) && (*/}
+            {/*                <>*/}
+            {/*                    <Menu.Item>*/}
+            {/*                        <Link to="/profile" style={{color: 'black'}}> Profile </Link>*/}
+            {/*                    </Menu.Item>*/}
+            {/*                    <Menu.Item>*/}
+            {/*                        <Button color='green' onClick={handleLogout}>*/}
 
-                                        Logout
+            {/*                            Logout*/}
 
-                                    </Button>
-                                </Menu.Item>
-                            </>
-                        )}
+            {/*                        </Button>*/}
+            {/*                    </Menu.Item>*/}
+            {/*                </>*/}
+            {/*            )}*/}
 
-                    </Menu.Menu>
-                </Menu>
-            </nav>
+            {/*        </Menu.Menu>*/}
+            {/*    </Menu>*/}
+            {/*</nav>*/}
+            <Navbar transparent businessLoggedIn={business} customerLoggedIn={customer}/>
           <Routes>
-              <Route path="/" element={<LandingPage />} />
+              <Route path="/" element={<Landing />} />
               {!business && <Route path="BusinessLogin" element={<SignInBusiness businessAuth={() => setBusiness(true)} />} />}
               {business && (
                   <>
-                      <Route path="business-profile" element={<Dashboard />} />
+                      <Route path="bprof" element={<Bprof />} />
                   </>
               )}
               <Route path="BusinessSignUp" element={<SignUpBusiness />} />
               {!customer && <Route path="CustomerLogin" element={<SignInCustomer customerAuth={() => setCustomer(true)}/>} />}
               {customer && (
                   <>
-                      <Route path="customer-profile" element={<CustomerProfile customerLogout={() => setCustomer(false)}/>} />
+                      <Route path="Cprof" element={<Cprof/>} />
                   </>
               )}
 

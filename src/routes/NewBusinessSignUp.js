@@ -67,7 +67,7 @@ export default function SignUpBusiness() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs" style={{marginBottom : '13vh'}}>
+            <Container component="main" maxWidth="xs" style={{marginBottom : '14.5em'}}>
                 <CssBaseline />
                 <Box
                     sx={{

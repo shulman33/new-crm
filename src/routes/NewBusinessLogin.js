@@ -48,7 +48,7 @@ export default function SignInBusiness({businessAuth}) {
                 console.log(`this is the email ${email}`)
                 console.log(`this is the username ${username}`)
                 localStorage.setItem('userId', email);
-                navigate("/business-profile")
+                navigate("/bprof")
             },
 
             onFailure: err => {
@@ -64,7 +64,7 @@ export default function SignInBusiness({businessAuth}) {
 
     return (
         <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs" style={{marginBottom : '20vh'}}>
+            <Container component="main" maxWidth="xs" style={{marginBottom : '25.5em'}}>
                 <CssBaseline />
                 <Box
                     sx={{

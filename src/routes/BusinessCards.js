@@ -9,12 +9,12 @@ function BusinessCards(props) {
         const {businesses} = props;
         if (businesses.length > 0) {
             return(
-                businesses.slice(0,14).map((business) => {
+                businesses.slice(0,1).map((business) => {
                     console.log(business);
                     const businessName = business.businessName.S 
                     const businessAddress = business.address.S 
                     return(
-                        <Card>
+                        <Card style={{marginLeft: '2.5em'}}>
                             <Card.Content>
                                 <Card.Header>{business.businessName.S}</Card.Header>
                                 <Card.Description>{business.description.S}</Card.Description>
